@@ -2,14 +2,16 @@
   /** App Colors **/
 
   --primary-white: #ffffff;
+  --primary-black: #121417;
   --secondary-white: #f8f8f8;
   --green-price: #38cd3e;
-  --accent-color: #cbded3;
+  --accent-color: #9fbaae;
 }
 
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+  color: var(--primary-black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
