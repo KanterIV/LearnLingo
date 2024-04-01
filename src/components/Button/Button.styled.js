@@ -31,4 +31,11 @@ export const StyledButton = styled.button`
       height: 20px;
     }
   }
+
+  &.form-btn {
+    width: 100%;
+    height: 60px;
+    line-height: 1.56;
+    background-color: var(--accent-color);
+  }
 `;

@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import { Button } from "../../components";
+
 import AppLogo from "../../assets/icons/logo.svg?react";
 import LoginIcon from "../../assets/icons/login.svg?react";
-import { Button } from "../../components";
 
 const Header = () => {
   return (
@@ -29,10 +30,10 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <Button styledClass="loginBtn" type="button">
+      <Button styledClass="loginBtn" buttonType="button">
         <LoginIcon /> Log In
       </Button>
-      <Button styledClass="registerBtn" type="button">
+      <Button styledClass="registerBtn" buttonType="button">
         Registration
       </Button>
     </header>
