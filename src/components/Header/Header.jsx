@@ -3,6 +3,10 @@ import { Button } from "../../components";
 
 import AppLogo from "../../assets/icons/logo.svg?react";
 import LoginIcon from "../../assets/icons/login.svg?react";
+import {
+  setLoginModal,
+  setRegisterModal,
+} from "../../redux/modals/modalsSlice";
 
 const Header = () => {
   return (
@@ -30,10 +34,18 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <Button styledClass="loginBtn" buttonType="button">
+      <Button
+        styledClass="loginBtn"
+        buttonType="button"
+        onClickFunction={setLoginModal}
+      >
         <LoginIcon /> Log In
       </Button>
-      <Button styledClass="registerBtn" buttonType="button">
+      <Button
+        styledClass="registerBtn"
+        buttonType="button"
+        onClickFunction={setRegisterModal}
+      >
         Registration
       </Button>
     </header>

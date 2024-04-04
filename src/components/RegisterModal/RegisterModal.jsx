@@ -39,7 +39,11 @@ const LoginModal = () => {
   const { errors, touched, handleChange, handleBlur } = formik;
 
   return (
-    <Modal styledClass="login-modal" title="Log In" textContent={loginText}>
+    <Modal
+      styledClass="login-modal"
+      title="Registration"
+      textContent={loginText}
+    >
       <StyledRegisterForm onSubmit={formik.handleSubmit}>
         <input
           className={`input ${
