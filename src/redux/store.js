@@ -1,35 +1,36 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import { modalsReducer } from "./modals/modalsSlice";
+import { userReducer } from "./user/userSlice";
 
-// const favoriteConfig = {
-//   key: "favorite",
-//   storage,
-//   whitelist: ["favoriteArr"],
-// };
+const userConfig = {
+  key: "user",
+  storage,
+  whitelist: [],
+};
 
 export const store = configureStore({
   reducer: {
     modals: modalsReducer,
-    // favorite: persistReducer(favoriteConfig, favoriteReducer),
+    user: persistReducer(userConfig, userReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

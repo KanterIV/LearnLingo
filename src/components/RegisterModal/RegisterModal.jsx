@@ -1,29 +1,41 @@
 import { Modal, Button } from "../../components";
 import { StyledRegisterForm } from "./RegisterModal.styled";
 import { registerSchema } from "../../services/schemas/registerSchema";
+import { auth } from "../../services/firebase/firebase";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
+import { newUserRegister } from "../../redux/user/userSlice";
+import { closeAllModals } from "../../redux/modals/modalsSlice";
+import { selectUserSingnedUp } from "../../redux/user/userSelectors";
 
 const LoginModal = () => {
-  const loginText =
+  const registerText =
     "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.";
-
+  const userSignUpStatus = useSelector(selectUserSingnedUp);
+  const dispatch = useDispatch();
   const [privatPassword, setPrivatPassword] = useState(true);
+
+  useEffect(() => {
+    if (userSignUpStatus) {
+      dispatch(closeAllModals());
+    }
+  }, [dispatch, userSignUpStatus]);
 
   const onPasswordPrivacySetting = () => {
     setPrivatPassword((prevPasswordSettings) => !prevPasswordSettings);
   };
 
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = async (values) => {
     const formData = {
-      name: values.name,
+      auth: auth,
       email: values.email,
       password: values.password,
     };
-    console.log(formData);
+    dispatch(newUserRegister(formData));
   };
 
   const formik = useFormik({
@@ -42,7 +54,7 @@ const LoginModal = () => {
     <Modal
       styledClass="login-modal"
       title="Registration"
-      textContent={loginText}
+      textContent={registerText}
     >
       <StyledRegisterForm onSubmit={formik.handleSubmit}>
         <input

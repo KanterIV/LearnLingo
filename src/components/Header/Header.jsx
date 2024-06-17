@@ -7,8 +7,17 @@ import {
   setLoginModal,
   setRegisterModal,
 } from "../../redux/modals/modalsSlice";
+import { setIsSignedUpStatus } from "../../redux/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const onRegisterBtnClick = () => {
+    dispatch(setIsSignedUpStatus(false));
+    dispatch(setRegisterModal(true));
+  };
+
   return (
     <header>
       <nav className="header-nav">
@@ -44,7 +53,7 @@ const Header = () => {
       <Button
         styledClass="registerBtn"
         buttonType="button"
-        onClickFunction={setRegisterModal}
+        onClickFunction={onRegisterBtnClick}
       >
         Registration
       </Button>
