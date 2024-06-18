@@ -3,14 +3,15 @@ import { StyledRegisterForm } from "./RegisterModal.styled";
 import { registerSchema } from "../../services/schemas/registerSchema";
 import { auth } from "../../services/firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-
-import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
-import IconClosedEye from "../../assets/icons/eye-off.svg?react";
 import { newUserRegister } from "../../redux/user/userSlice";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { selectUserSingnedUp } from "../../redux/user/userSelectors";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
+import IconClosedEye from "../../assets/icons/eye-off.svg?react";
 
 const LoginModal = () => {
   const registerText =
@@ -38,17 +39,14 @@ const LoginModal = () => {
     dispatch(newUserRegister(formData));
   };
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-    validationSchema: registerSchema,
-    onSubmit: handleFormSubmit,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(registerSchema),
+    mode: "onBlur",
   });
-
-  const { errors, touched, handleChange, handleBlur } = formik;
 
   return (
     <Modal
@@ -56,48 +54,32 @@ const LoginModal = () => {
       title="Registration"
       textContent={registerText}
     >
-      <StyledRegisterForm onSubmit={formik.handleSubmit}>
+      <StyledRegisterForm onSubmit={handleSubmit(handleFormSubmit)}>
         <input
-          className={`input ${
-            errors.name && touched.name ? "error-input" : ""
-          } `}
+          {...register("name")}
+          className={`input ${errors.name ? "error-input" : ""} `}
           type="text"
           name="name"
           placeholder="Name"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={formik.values.name}
         />
-        {errors.name && touched.name ? (
-          <div className="error">{formik.errors.name}</div>
-        ) : null}
+        {errors.name && <div className="error">{errors.name?.message}</div>}
 
         <input
-          className={`input ${
-            errors.email && touched.email ? "error-input" : ""
-          } `}
+          {...register("email")}
+          className={`input ${errors.email ? "error-input" : ""} `}
           type="email"
           name="email"
           placeholder="Email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={formik.values.email}
         />
-        {errors.email && touched.email ? (
-          <div className="error">{formik.errors.email}</div>
-        ) : null}
+        {errors.email && <div className="error">{errors.email?.message}</div>}
 
         <div className="password-input-wrapper">
           <input
-            className={`input ${
-              errors.password && touched.password ? "error-input" : ""
-            } `}
-            type={privatPassword.password ? "password" : "text"}
+            {...register("password")}
+            className={`input ${errors.password ? "error-input" : ""} `}
+            type={privatPassword ? "password" : "text"}
             name="password"
             placeholder="Password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={formik.values.password}
           />
           {privatPassword ? (
             <IconClosedEye
@@ -111,8 +93,8 @@ const LoginModal = () => {
             />
           )}
 
-          {errors.password && touched.password ? (
-            <div className="error">{formik.errors.password}</div>
+          {errors.password ? (
+            <div className="error">{errors.password?.message}</div>
           ) : null}
         </div>
         <Button styledClass="form-btn" buttonType="submit">

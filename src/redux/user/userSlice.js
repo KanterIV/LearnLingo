@@ -1,5 +1,8 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const newUserRegister = createAsyncThunk(
   "user/register",
@@ -13,6 +16,8 @@ export const newUserRegister = createAsyncThunk(
         email,
         password
       );
+
+      console.log(userData);
 
       const user = {
         email: userData.user.email,
@@ -29,8 +34,16 @@ export const userLogin = createAsyncThunk(
   "user/login",
   async (formData, thunkApi) => {
     try {
-      //   const userData = await requestLogin(formData);
-      //   return userData;
+      const email = formData.email;
+      const password = formData.password;
+      const auth = formData.auth;
+      const userData = await signInWithEmailAndPassword(auth, email, password);
+      console.log(userData);
+      // const user = {
+      //   email: userData.user.email,
+      // };
+
+      // return userData;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -72,10 +85,10 @@ const userSlice = createSlice({
       })
 
       // ------------ Login User ----------------------
-      .addCase(userLogin.fulfilled, (state, action) => {
+      .addCase(userLogin.fulfilled, (state) => {
         state.isLoading = false;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        // state.user = action.payload.user;
+        // state.token = action.payload.token;
         state.isSignedIn = true;
       })
 

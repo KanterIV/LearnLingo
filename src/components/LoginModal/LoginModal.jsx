@@ -1,67 +1,72 @@
 import { StyledLoginFrom } from "./LoginModal.styled";
 import { Modal, Button } from "../../components";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../services/schemas/loginSchema";
-import { useFormik } from "formik";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { auth } from "../../services/firebase/firebase";
+import { userLogin } from "../../redux/user/userSlice";
 
 import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
+import { closeAllModals } from "../../redux/modals/modalsSlice";
+import { selectUserSingnedIn } from "../../redux/user/userSelectors";
 
 const LoginModal = () => {
+  const dispatch = useDispatch();
+  const userSignInStatus = useSelector(selectUserSingnedIn);
+  const [privatPassword, setPrivatPassword] = useState(true);
   const loginText =
     "Welcome back! Please enter your credentials to access your account and continue your search for an teacher.";
-
-  const [privatPassword, setPrivatPassword] = useState(true);
 
   const onPasswordPrivacySetting = () => {
     setPrivatPassword((prevPasswordSettings) => !prevPasswordSettings);
   };
 
-  const handleFormSubmit = (values) => {
-    const formData = { email: values.email, password: values.password };
-    console.log(formData);
-  };
+  useEffect(() => {
+    if (userSignInStatus) {
+      dispatch(closeAllModals());
+    }
+  }, [dispatch, userSignInStatus]);
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: loginSchema,
-    onSubmit: handleFormSubmit,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+    mode: "onBlur",
   });
 
-  const { errors, touched, handleChange, handleBlur } = formik;
+  const handleFormSubmit = (values) => {
+    const formData = {
+      auth: auth,
+      email: values.email,
+      password: values.password,
+    };
+    dispatch(userLogin(formData));
+  };
 
   return (
     <Modal styledClass="login-modal" title="Log In" textContent={loginText}>
-      <StyledLoginFrom onSubmit={formik.handleSubmit}>
+      <StyledLoginFrom onSubmit={handleSubmit(handleFormSubmit)}>
         <input
-          className={`input ${
-            errors.email && touched.email ? "error-input" : ""
-          } `}
-          type="email"
+          {...register("email")}
+          className={`input ${errors.email ? "error-input" : ""} `}
+          type="text"
           name="email"
           placeholder="Email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={formik.values.email}
         />
-        {errors.email && touched.email ? (
-          <div className="error">{formik.errors.email}</div>
-        ) : null}
+        {errors.email && <div className="error">{errors.email?.message}</div>}
 
         <div className="password-input-wrapper">
           <input
-            className={`input ${
-              errors.password && touched.password ? "error-input" : ""
-            } `}
+            {...register("password")}
+            className={`input ${errors.password ? "error-input" : ""} `}
             type={privatPassword ? "password" : "text"}
             name="password"
             placeholder="Password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={formik.values.password}
           />
           {privatPassword ? (
             <IconClosedEye
@@ -75,9 +80,9 @@ const LoginModal = () => {
             />
           )}
 
-          {errors.password && touched.password ? (
-            <div className="error">{formik.errors.password}</div>
-          ) : null}
+          {errors.password && (
+            <div className="error">{errors.password?.message}</div>
+          )}
         </div>
         <Button styledClass="form-btn" buttonType="submit">
           Login

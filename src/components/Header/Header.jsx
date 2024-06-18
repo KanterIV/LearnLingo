@@ -18,6 +18,10 @@ const Header = () => {
     dispatch(setRegisterModal(true));
   };
 
+  const onLoginBtnClick = () => {
+    dispatch(setLoginModal(true));
+  };
+
   return (
     <header>
       <nav className="header-nav">
@@ -46,7 +50,7 @@ const Header = () => {
       <Button
         styledClass="loginBtn"
         buttonType="button"
-        onClickFunction={setLoginModal}
+        onClickFunction={onLoginBtnClick}
       >
         <LoginIcon /> Log In
       </Button>
