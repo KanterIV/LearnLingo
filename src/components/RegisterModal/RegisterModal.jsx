@@ -1,12 +1,11 @@
 import { Modal, Button } from "../../components";
 import { StyledRegisterForm } from "./RegisterModal.styled";
 import { registerSchema } from "../../services/schemas/registerSchema";
-import { auth } from "../../services/firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { newUserRegister } from "../../redux/user/userSlice";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
-import { selectUserSingnedUp } from "../../redux/user/userSelectors";
+import { selectUserSingnedIn } from "../../redux/user/userSelectors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -16,15 +15,15 @@ import IconClosedEye from "../../assets/icons/eye-off.svg?react";
 const LoginModal = () => {
   const registerText =
     "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.";
-  const userSignUpStatus = useSelector(selectUserSingnedUp);
+  const userSignInStatus = useSelector(selectUserSingnedIn);
   const dispatch = useDispatch();
   const [privatPassword, setPrivatPassword] = useState(true);
 
   useEffect(() => {
-    if (userSignUpStatus) {
+    if (userSignInStatus) {
       dispatch(closeAllModals());
     }
-  }, [dispatch, userSignUpStatus]);
+  }, [dispatch, userSignInStatus]);
 
   const onPasswordPrivacySetting = () => {
     setPrivatPassword((prevPasswordSettings) => !prevPasswordSettings);
@@ -32,7 +31,6 @@ const LoginModal = () => {
 
   const handleFormSubmit = async (values) => {
     const formData = {
-      auth: auth,
       email: values.email,
       password: values.password,
     };

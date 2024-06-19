@@ -5,7 +5,6 @@ import { loginSchema } from "../../services/schemas/loginSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { auth } from "../../services/firebase/firebase";
 import { userLogin } from "../../redux/user/userSlice";
 
 import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
@@ -41,7 +40,6 @@ const LoginModal = () => {
 
   const handleFormSubmit = (values) => {
     const formData = {
-      auth: auth,
       email: values.email,
       password: values.password,
     };

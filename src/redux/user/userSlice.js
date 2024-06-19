@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { auth } from "../../services/firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 export const newUserRegister = createAsyncThunk(
@@ -10,20 +12,7 @@ export const newUserRegister = createAsyncThunk(
     try {
       const email = formData.email;
       const password = formData.password;
-      const auth = formData.auth;
-      const userData = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      console.log(userData);
-
-      const user = {
-        email: userData.user.email,
-      };
-
-      return user;
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -36,14 +25,18 @@ export const userLogin = createAsyncThunk(
     try {
       const email = formData.email;
       const password = formData.password;
-      const auth = formData.auth;
-      const userData = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userData);
-      // const user = {
-      //   email: userData.user.email,
-      // };
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-      // return userData;
+export const userLogout = createAsyncThunk(
+  "user/logout",
+  async (_, thunkApi) => {
+    try {
+      await signOut(auth);
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -60,7 +53,6 @@ const INITIAL_STATE = {
   token: null,
   isLoading: false,
   error: null,
-  isSignedUp: false,
   isSignedIn: false,
 };
 
@@ -69,8 +61,8 @@ const userSlice = createSlice({
   initialState: INITIAL_STATE,
 
   reducers: {
-    setIsSignedUpStatus(state, action) {
-      state.isSignedUp = action.payload;
+    setIsSignedInStatus(state, action) {
+      state.isSignedIn = action.payload;
     },
   },
 
@@ -78,36 +70,40 @@ const userSlice = createSlice({
     builder
 
       // ------------ Register User ----------------------
-      .addCase(newUserRegister.fulfilled, (state, action) => {
+      .addCase(newUserRegister.fulfilled, (state) => {
         state.isLoading = false;
-        state.user.email = action.payload.email;
-        state.isSignedUp = true;
       })
 
       // ------------ Login User ----------------------
       .addCase(userLogin.fulfilled, (state) => {
         state.isLoading = false;
-        // state.user = action.payload.user;
-        // state.token = action.payload.token;
-        state.isSignedIn = true;
+      })
+
+      // ------------ Logout User ---------------------
+
+      .addCase(userLogout.fulfilled, (state) => {
+        state.isLoading = false;
       })
 
       .addMatcher(
-        isAnyOf(newUserRegister.pending, userLogin.pending),
+        isAnyOf(newUserRegister.pending, userLogin.pending, userLogout.pending),
         (state) => {
           state.isLoading = true;
           state.error = null;
         }
       )
       .addMatcher(
-        isAnyOf(newUserRegister.rejected, userLogin.rejected),
+        isAnyOf(
+          newUserRegister.rejected,
+          userLogin.rejected,
+          userLogout.rejected
+        ),
         (state) => {
           state.isLoading = false;
           state.error = null;
-          state.isSignedIn = false;
         }
       ),
 });
 
-export const { setIsSignedUpStatus } = userSlice.actions;
+export const { setIsSignedInStatus } = userSlice.actions;
 export const userReducer = userSlice.reducer;
