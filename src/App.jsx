@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { setIsSignedInStatus } from "./redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import "./App.css";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Teachers = lazy(() => import("./pages/Teachers/Teachers"));
@@ -36,7 +37,14 @@ function App() {
         <Route path={ROUTE_PATH.home} element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path={ROUTE_PATH.teachers} element={<Teachers />} />
-          <Route path={ROUTE_PATH.favorites} element={<Favorite />} />
+          <Route
+            path={ROUTE_PATH.favorites}
+            element={
+              <PrivateRoute>
+                <Favorite />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
