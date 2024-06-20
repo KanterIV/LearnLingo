@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { auth } from "../../services/firebase/firebase";
+import { auth, database } from "../../services/firebase/firebase";
+import { off, onValue, ref } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -13,6 +14,7 @@ export const newUserRegister = createAsyncThunk(
       const email = formData.email;
       const password = formData.password;
       await createUserWithEmailAndPassword(auth, email, password);
+      return;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -26,6 +28,7 @@ export const userLogin = createAsyncThunk(
       const email = formData.email;
       const password = formData.password;
       await signInWithEmailAndPassword(auth, email, password);
+      return;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -37,6 +40,32 @@ export const userLogout = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       await signOut(auth);
+      return;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getTeachersFromDb = createAsyncThunk(
+  "teachers/getAll",
+  async (_, thunkApi) => {
+    try {
+      const teachersRef = ref(database, "/");
+      return new Promise((resolve, reject) => {
+        const listener = onValue(
+          teachersRef,
+          (snapshot) => {
+            const teachersData = snapshot.val();
+            resolve(teachersData);
+            off(teachersRef, "value", listener);
+          },
+          (error) => {
+            reject(error);
+            off(teachersRef, "value", listener);
+          }
+        );
+      });
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -45,12 +74,15 @@ export const userLogout = createAsyncThunk(
 
 const INITIAL_STATE = {
   user: {
-    id: null,
     email: null,
     name: null,
   },
 
-  token: null,
+  teachrs: {
+    teachersArr: [],
+    favorite: [],
+  },
+
   isLoading: false,
   error: null,
   isSignedIn: false,
@@ -85,8 +117,20 @@ const userSlice = createSlice({
         state.isLoading = false;
       })
 
+      // ------------ Thechers ------------------------
+
+      .addCase(getTeachersFromDb.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.teachrs.teachersArr = action.payload;
+      })
+
       .addMatcher(
-        isAnyOf(newUserRegister.pending, userLogin.pending, userLogout.pending),
+        isAnyOf(
+          newUserRegister.pending,
+          userLogin.pending,
+          userLogout.pending,
+          getTeachersFromDb.pending
+        ),
         (state) => {
           state.isLoading = true;
           state.error = null;
@@ -96,7 +140,8 @@ const userSlice = createSlice({
         isAnyOf(
           newUserRegister.rejected,
           userLogin.rejected,
-          userLogout.rejected
+          userLogout.rejected,
+          getTeachersFromDb.rejected
         ),
         (state) => {
           state.isLoading = false;

@@ -5,7 +5,7 @@ import {
   setRegisterModal,
 } from "../../redux/modals/modalsSlice";
 import { selectUserSingnedIn } from "../../redux/user/userSelectors";
-import { userLogout } from "../../redux/user/userSlice";
+import { getTeachersFromDb, userLogout } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import AppLogo from "../../assets/icons/logo.svg?react";
@@ -26,6 +26,9 @@ const Header = () => {
 
   const onLogOutBtnClock = () => {
     dispatch(userLogout());
+  };
+  const getAllTeachers = () => {
+    dispatch(getTeachersFromDb());
   };
 
   return (
@@ -79,6 +82,16 @@ const Header = () => {
           onClickFunction={onLogOutBtnClock}
         >
           <LogOutIcon /> Log Out
+        </Button>
+      )}
+
+      {authenticated && (
+        <Button
+          styledClass="loginBtn"
+          buttonType="button"
+          onClickFunction={getAllTeachers}
+        >
+          <LogOutIcon /> GET TEAHERS
         </Button>
       )}
     </header>
