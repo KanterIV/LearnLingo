@@ -20,10 +20,8 @@ function App() {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(setIsSignedInStatus(true));
-        console.log("User is logged in");
       } else {
         dispatch(setIsSignedInStatus(false));
-        console.log("User is logged out");
       }
     });
     return () => {

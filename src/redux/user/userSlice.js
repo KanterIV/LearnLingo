@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { auth, database } from "../../services/firebase/firebase";
-import { off, onValue, ref } from "firebase/database";
+import { onValue, ref } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -47,22 +47,22 @@ export const userLogout = createAsyncThunk(
   }
 );
 
-export const getTeachersFromDb = createAsyncThunk(
+export const getAllTeachers = createAsyncThunk(
   "teachers/getAll",
   async (_, thunkApi) => {
     try {
       const teachersRef = ref(database, "/");
       return new Promise((resolve, reject) => {
-        const listener = onValue(
+        onValue(
           teachersRef,
           (snapshot) => {
             const teachersData = snapshot.val();
             resolve(teachersData);
-            off(teachersRef, "value", listener);
+            // off(teachersRef, "value", listener);
           },
           (error) => {
             reject(error);
-            off(teachersRef, "value", listener);
+            // off(teachersRef, "value", listener);
           }
         );
       });
@@ -78,7 +78,7 @@ const INITIAL_STATE = {
     name: null,
   },
 
-  teachrs: {
+  teachers: {
     teachersArr: [],
     favorite: [],
   },
@@ -119,9 +119,9 @@ const userSlice = createSlice({
 
       // ------------ Thechers ------------------------
 
-      .addCase(getTeachersFromDb.fulfilled, (state, action) => {
+      .addCase(getAllTeachers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.teachrs.teachersArr = action.payload;
+        state.teachers.teachersArr = action.payload;
       })
 
       .addMatcher(
@@ -129,7 +129,7 @@ const userSlice = createSlice({
           newUserRegister.pending,
           userLogin.pending,
           userLogout.pending,
-          getTeachersFromDb.pending
+          getAllTeachers.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -141,7 +141,7 @@ const userSlice = createSlice({
           newUserRegister.rejected,
           userLogin.rejected,
           userLogout.rejected,
-          getTeachersFromDb.rejected
+          getAllTeachers.rejected
         ),
         (state) => {
           state.isLoading = false;
