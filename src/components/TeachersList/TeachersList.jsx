@@ -19,11 +19,12 @@ const TeachersList = ({ teachersArr }) => {
             lesson_info,
             conditions,
             experience,
+            id,
           } = teacher;
 
           return (
             <TeachersListItem
-              key={avatar_url}
+              key={id}
               name={name}
               surname={surname}
               languages={languages}
