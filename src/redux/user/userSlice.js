@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { auth, database } from "../../services/firebase/firebase";
-import { onValue, ref } from "firebase/database";
+import { get, ref } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -52,20 +52,19 @@ export const getAllTeachers = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const teachersRef = ref(database, "/");
-      return new Promise((resolve, reject) => {
-        onValue(
-          teachersRef,
-          (snapshot) => {
-            const teachersData = snapshot.val();
-            resolve(teachersData);
-            // off(teachersRef, "value", listener);
-          },
-          (error) => {
-            reject(error);
-            // off(teachersRef, "value", listener);
-          }
-        );
-      });
+      const snapshot = await get(teachersRef);
+      const teachersData = [];
+      if (snapshot.exists()) {
+        snapshot.forEach((teacherSnapshot) => {
+          teachersData.push({
+            ...teacherSnapshot.val(),
+            id: teacherSnapshot.key,
+          });
+        });
+        return teachersData;
+      } else {
+        return teachersData;
+      }
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

@@ -1,11 +1,7 @@
-import { useSelector } from "react-redux";
 import { StyledTeachersList } from "./TeachersList.styled";
-import { selectAllteachers } from "../../redux/user/userSelectors";
 import TeachersListItem from "../TeachersListItem/TeachersListItem";
 
-const TeachersList = () => {
-  const teachersArr = useSelector(selectAllteachers);
-
+const TeachersList = ({ teachersArr }) => {
   return (
     <StyledTeachersList>
       {teachersArr.length !== 0 &&
