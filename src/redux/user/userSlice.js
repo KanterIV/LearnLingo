@@ -72,19 +72,12 @@ export const getAllTeachers = createAsyncThunk(
 );
 
 const INITIAL_STATE = {
-  user: {
-    email: null,
-    name: null,
-  },
+  teachersArr: [],
+  favorite: [],
 
-  teachers: {
-    teachersArr: [],
-    favorite: [],
-  },
-
+  isSignedIn: false,
   isLoading: false,
   error: null,
-  isSignedIn: false,
 };
 
 const userSlice = createSlice({
@@ -94,6 +87,14 @@ const userSlice = createSlice({
   reducers: {
     setIsSignedInStatus(state, action) {
       state.isSignedIn = action.payload;
+    },
+    addFavoriteTeacher(state, action) {
+      state.favorite.push(action.payload);
+    },
+    removeFavoriteTeacher(state, action) {
+      state.favorite = state.favorite.filter(
+        (teacher) => teacher.id !== action.payload
+      );
     },
   },
 
@@ -120,7 +121,7 @@ const userSlice = createSlice({
 
       .addCase(getAllTeachers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.teachers.teachersArr = action.payload;
+        state.teachersArr = action.payload;
       })
 
       .addMatcher(
@@ -149,5 +150,9 @@ const userSlice = createSlice({
       ),
 });
 
-export const { setIsSignedInStatus } = userSlice.actions;
+export const {
+  setIsSignedInStatus,
+  addFavoriteTeacher,
+  removeFavoriteTeacher,
+} = userSlice.actions;
 export const userReducer = userSlice.reducer;

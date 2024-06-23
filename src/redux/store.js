@@ -17,7 +17,7 @@ import { userReducer } from "./user/userSlice";
 const userConfig = {
   key: "user",
   storage,
-  whitelist: [],
+  whitelist: ["favorite"],
 };
 
 export const store = configureStore({

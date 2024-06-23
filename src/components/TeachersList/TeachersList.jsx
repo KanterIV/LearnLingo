@@ -25,6 +25,7 @@ const TeachersList = ({ teachersArr }) => {
           return (
             <TeachersListItem
               key={id}
+              id={id}
               name={name}
               surname={surname}
               languages={languages}
