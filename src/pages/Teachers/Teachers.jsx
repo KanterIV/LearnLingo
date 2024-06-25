@@ -8,6 +8,13 @@ import FilterSelect from "../../components/FilterSelect/FilterSelect";
 
 const Teachers = () => {
   const [visibleTeachersArr, setVisibleTeachersArr] = useState(4);
+  const [teacherfilters, setTeacherFilters] = useState({
+    languages: null,
+    levels: null,
+    price_per_hour: null,
+  });
+  console.log(teacherfilters);
+
   const allTeachersArr = useSelector(selectAllteachers);
   const dispatch = useDispatch();
 
@@ -20,7 +27,7 @@ const Teachers = () => {
 
   return (
     <>
-      <FilterSelect />
+      <FilterSelect setTeacherFilters={setTeacherFilters} />
       <TeachersList teachersArr={allTeachersArr.slice(0, visibleTeachersArr)} />
       {allTeachersArr.length > visibleTeachersArr && (
         <Button

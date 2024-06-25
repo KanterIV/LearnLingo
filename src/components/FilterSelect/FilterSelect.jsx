@@ -4,13 +4,13 @@ import {
   teachersLanguage,
   teachersPrice,
 } from "../../assets/data/teachersFilterVariables";
+// import { useState } from "react";
 
-const FilterSelect = () => {
+const FilterSelect = ({ setTeacherFilters }) => {
   const selectStyles = {
     control: (styles) => ({
       ...styles,
       backgroundColor: "#FFFFFF",
-      //   border: "none",
       borderRadius: "14px",
       width: "400px",
     }),
@@ -18,36 +18,52 @@ const FilterSelect = () => {
     menu: (styles) => ({ ...styles, width: "400px" }),
   };
 
+  //   const [teacherfilters, setTeacherFilters] = useState({
+  //     languages: null,
+  //     level: null,
+  //     price: null,
+  //   });
+
+  const handleSelectChange = (selectOption, { name }) => {
+    setTeacherFilters((prevState) => ({
+      ...prevState,
+      [name]: selectOption.value,
+    }));
+  };
+
   return (
     <ul>
       <li>
         <p>Languages</p>
         <Select
+          name="languages"
+          placeholder="Language"
           options={teachersLanguage}
-          defaultValue={teachersLanguage[0]}
           blurInputOnSelect="true"
-          hideSelectedOptions="true"
           styles={selectStyles}
+          onChange={handleSelectChange}
         />
       </li>
       <li>
         <p>Level of knowledge</p>
         <Select
+          name="levels"
+          placeholder="Level"
           options={languageLevel}
-          defaultValue={languageLevel[0]}
           blurInputOnSelect="true"
-          hideSelectedOptions="true"
           styles={selectStyles}
+          onChange={handleSelectChange}
         />
       </li>
       <li>
         <p>Price</p>
         <Select
+          name="price_per_hour"
+          placeholder="$/hour"
           options={teachersPrice}
-          defaultValue={teachersPrice[0]}
           blurInputOnSelect="true"
-          hideSelectedOptions="true"
           styles={selectStyles}
+          onChange={handleSelectChange}
         />
       </li>
     </ul>
