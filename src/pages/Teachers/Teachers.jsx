@@ -4,6 +4,7 @@ import { getAllTeachers } from "../../redux/user/userSlice";
 import TeachersList from "../../components/TeachersList/TeachersList";
 import { selectAllteachers } from "../../redux/user/userSelectors";
 import Button from "../../components/Button/Button";
+import FilterSelect from "../../components/FilterSelect/FilterSelect";
 
 const Teachers = () => {
   const [visibleTeachersArr, setVisibleTeachersArr] = useState(4);
@@ -19,6 +20,7 @@ const Teachers = () => {
 
   return (
     <>
+      <FilterSelect />
       <TeachersList teachersArr={allTeachersArr.slice(0, visibleTeachersArr)} />
       {allTeachersArr.length > visibleTeachersArr && (
         <Button
