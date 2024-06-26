@@ -14,7 +14,6 @@ const Teachers = () => {
     levels: null,
     price_per_hour: null,
   });
-  console.log(filtredArray);
 
   const allTeachersArr = useSelector(selectAllteachers);
   const dispatch = useDispatch();

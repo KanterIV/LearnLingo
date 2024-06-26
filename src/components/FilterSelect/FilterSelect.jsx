@@ -4,7 +4,6 @@ import {
   teachersLanguage,
   teachersPrice,
 } from "../../assets/data/teachersFilterVariables";
-// import { useState } from "react";
 
 const FilterSelect = ({ setTeacherFilters }) => {
   const selectStyles = {
@@ -17,12 +16,6 @@ const FilterSelect = ({ setTeacherFilters }) => {
     indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
     menu: (styles) => ({ ...styles, width: "400px" }),
   };
-
-  //   const [teacherfilters, setTeacherFilters] = useState({
-  //     languages: null,
-  //     level: null,
-  //     price: null,
-  //   });
 
   const handleSelectChange = (selectOption, { name }) => {
     setTeacherFilters((prevState) => ({
