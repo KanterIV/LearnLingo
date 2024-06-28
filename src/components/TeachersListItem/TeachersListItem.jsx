@@ -12,7 +12,10 @@ import {
   removeFavoriteTeacher,
 } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteteachers } from "../../redux/user/userSelectors";
+import {
+  selectFavoriteteachers,
+  selectUserSingnedIn,
+} from "../../redux/user/userSelectors";
 
 const TeachersListItem = ({
   id,
@@ -32,6 +35,7 @@ const TeachersListItem = ({
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
   const favoriteTeachersArr = useSelector(selectFavoriteteachers);
+  const authenticated = useSelector(selectUserSingnedIn);
   const teacherData = {
     id,
     name,
@@ -92,9 +96,12 @@ const TeachersListItem = ({
       </ul>
       <Button
         styledClass={
-          isFavorite ? "icon-heart-btn isFavorite" : "icon-heart-btn"
+          authenticated && isFavorite
+            ? "icon-heart-btn isFavorite"
+            : "icon-heart-btn"
         }
         buttonType="button"
+        tooltipAnchor="unlogged"
         onClickFunction={toggleFavoriteTeacher}
       >
         <HeartIcon />

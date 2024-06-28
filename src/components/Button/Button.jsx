@@ -1,9 +1,17 @@
 import { StyledButton } from "./Button.styled";
 
-const Button = ({ children, styledClass, buttonType, onClickFunction }) => {
+const Button = ({
+  children,
+  styledClass,
+  buttonType,
+  onClickFunction,
+  tooltipAnchor,
+}) => {
   return (
     <StyledButton
-      className={`${styledClass}`}
+      className={
+        tooltipAnchor ? `${styledClass} ${tooltipAnchor}` : `${styledClass}`
+      }
       type={`${buttonType}`}
       onClick={onClickFunction ? () => onClickFunction() : null}
     >
