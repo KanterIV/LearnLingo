@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   modals: {
     isRegisterModalOpen: false,
     isLoginModalOpen: false,
+    isBookingModalOpen: false,
   },
 };
 
@@ -18,14 +19,22 @@ const modalsSlice = createSlice({
     setLoginModal(state, action) {
       state.modals.isLoginModalOpen = action.payload;
     },
+    setBookingModal(state, action) {
+      state.modals.isBookingModalOpen = action.payload;
+    },
     closeAllModals(state) {
       state.modals.isRegisterModalOpen = false;
       state.modals.isLoginModalOpen = false;
+      state.modals.isBookingModalOpen = false;
     },
   },
 });
 
-export const { setLoginModal, setRegisterModal, closeAllModals } =
-  modalsSlice.actions;
+export const {
+  setLoginModal,
+  setRegisterModal,
+  setBookingModal,
+  closeAllModals,
+} = modalsSlice.actions;
 
 export const modalsReducer = modalsSlice.reducer;

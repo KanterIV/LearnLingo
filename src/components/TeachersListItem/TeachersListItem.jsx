@@ -16,6 +16,7 @@ import {
   selectFavoriteteachers,
   selectUserSingnedIn,
 } from "../../redux/user/userSelectors";
+import { setBookingModal } from "../../redux/modals/modalsSlice";
 
 const TeachersListItem = ({
   id,
@@ -68,8 +69,8 @@ const TeachersListItem = ({
     }
   };
 
-  const onBookBtnClick = () => {
-    console.log("book button click");
+  const onBookingBtnClick = () => {
+    dispatch(setBookingModal(true));
   };
 
   return (
@@ -116,7 +117,7 @@ const TeachersListItem = ({
       <Button
         styledClass="bookBtn"
         buttonType="button"
-        onClickFunction={onBookBtnClick}
+        onClickFunction={onBookingBtnClick}
       >
         Book trial lesson
       </Button>
