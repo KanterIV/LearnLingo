@@ -14,7 +14,7 @@ import BookingModal from "../BookingModal/BookingModal";
 const SharedLayout = () => {
   const isRegisterModalOpen = useSelector(selectRegisterModal);
   const isLoginModalOpen = useSelector(selectLoginModal);
-  const isBookingModalOpen = useSelector(selectBookingModal);
+  const { isBookingModalOpen } = useSelector(selectBookingModal);
   const authenticated = useSelector(selectUserSingnedIn);
 
   return (

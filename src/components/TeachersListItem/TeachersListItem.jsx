@@ -70,7 +70,7 @@ const TeachersListItem = ({
   };
 
   const onBookingBtnClick = () => {
-    dispatch(setBookingModal(true));
+    dispatch(setBookingModal({ status: true, id: id }));
   };
 
   return (

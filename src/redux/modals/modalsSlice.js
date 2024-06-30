@@ -4,7 +4,10 @@ const INITIAL_STATE = {
   modals: {
     isRegisterModalOpen: false,
     isLoginModalOpen: false,
-    isBookingModalOpen: false,
+    bookingModal: {
+      isBookingModalOpen: false,
+      clickedTeachersCardId: null,
+    },
   },
 };
 
@@ -20,12 +23,14 @@ const modalsSlice = createSlice({
       state.modals.isLoginModalOpen = action.payload;
     },
     setBookingModal(state, action) {
-      state.modals.isBookingModalOpen = action.payload;
+      state.modals.bookingModal.isBookingModalOpen = action.payload.status;
+      state.modals.bookingModal.clickedTeachersCardId = action.payload.id;
     },
     closeAllModals(state) {
       state.modals.isRegisterModalOpen = false;
       state.modals.isLoginModalOpen = false;
-      state.modals.isBookingModalOpen = false;
+      state.modals.bookingModal.isBookingModalOpen = false;
+      state.modals.bookingModal.clickedTeachersCardId = null;
     },
   },
 });
