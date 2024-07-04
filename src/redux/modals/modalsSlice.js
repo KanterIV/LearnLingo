@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   modals: {
+    isNavbarMenuOpen: false,
     isRegisterModalOpen: false,
     isLoginModalOpen: false,
     bookingModal: {
@@ -16,6 +17,9 @@ const modalsSlice = createSlice({
   initialState: INITIAL_STATE,
 
   reducers: {
+    setNavbarMenu(state, action) {
+      state.modals.isNavbarMenuOpen = action.payload;
+    },
     setRegisterModal(state, action) {
       state.modals.isRegisterModalOpen = action.payload;
     },
@@ -27,6 +31,7 @@ const modalsSlice = createSlice({
       state.modals.bookingModal.clickedTeachersCardId = action.payload.id;
     },
     closeAllModals(state) {
+      state.modals.isNavbarMenuOpen = false;
       state.modals.isRegisterModalOpen = false;
       state.modals.isLoginModalOpen = false;
       state.modals.bookingModal.isBookingModalOpen = false;
@@ -36,6 +41,7 @@ const modalsSlice = createSlice({
 });
 
 export const {
+  setNavbarMenu,
   setLoginModal,
   setRegisterModal,
   setBookingModal,

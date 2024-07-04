@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   line-height: 1.25;
   border: none;
   border-radius: 12px;
+  color: var(--primary-black);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &.registerBtn {
@@ -17,7 +18,13 @@ export const StyledButton = styled.button`
     background-color: var(--primary-black);
   }
 
-  &.loginBtn {
+  &.navbar-register-btn {
+    font-size: 18px;
+    width: 170px;
+    height: 52px;
+  }
+
+  &.login-logout-btn {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -30,6 +37,22 @@ export const StyledButton = styled.button`
       width: 20px;
       height: 20px;
     }
+  }
+
+  &.navbar-login-logout-btn {
+    font-size: 20px;
+    gap: 10px;
+    & svg {
+      path {
+        stroke: var(--accent-color);
+      }
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &.logaut-navbar-centering {
+    margin: 0 auto;
   }
 
   &.form-btn {

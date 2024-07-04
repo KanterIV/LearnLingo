@@ -101,3 +101,35 @@ img {
 .link {
   text-decoration: none;
 }
+
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 428px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1312px) {
+  .container {
+    width: 1184px;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+main {
+  position: relative;
+}
