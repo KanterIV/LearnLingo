@@ -36,11 +36,11 @@ const Header = () => {
   return (
     <StyledHeader>
       <div className="container header-container">
+        <Link className="logo" to="/">
+          <AppLogo className="logo-svg" />
+          LearnLingo
+        </Link>
         <nav className="header-nav">
-          <Link className="logo" to="/">
-            <AppLogo className="logo-svg" />
-            LearnLingo
-          </Link>
           {isTablet && (
             <ul className="header-list">
               <li>
@@ -65,7 +65,7 @@ const Header = () => {
         </nav>
 
         {!authenticated && isTablet ? (
-          <div>
+          <div className="header-buttons-container">
             <Button
               styledClass="login-logout-btn"
               buttonType="button"
@@ -84,7 +84,7 @@ const Header = () => {
         ) : (
           isTablet && (
             <Button
-              styledClass="login-logout-btn"
+              styledClass="login-logout-btn logout-btn"
               buttonType="button"
               onClickFunction={onLogOutBtnClock}
             >

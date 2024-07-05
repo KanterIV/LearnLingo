@@ -28,14 +28,23 @@ export const StyledButton = styled.button`
     display: flex;
     align-items: center;
     gap: 8px;
-
+    font-size: 16px;
     background-color: transparent;
+
     & svg {
       path {
         stroke: var(--accent-color);
       }
       width: 20px;
       height: 20px;
+    }
+  }
+
+  &.logout-btn {
+    & svg {
+      path {
+        fill: var(--accent-color);
+      }
     }
   }
 
@@ -53,6 +62,12 @@ export const StyledButton = styled.button`
 
   &.logaut-navbar-centering {
     margin: 0 auto;
+
+    & svg {
+      path {
+        fill: var(--accent-color);
+      }
+    }
   }
 
   &.form-btn {

@@ -82,6 +82,8 @@ a {
 
 button {
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 address {
@@ -122,11 +124,9 @@ img {
   }
 }
 
-@media screen and (min-width: 1312px) {
+@media screen and (min-width: 1440px) {
   .container {
-    width: 1184px;
-    padding-left: 64px;
-    padding-right: 64px;
+    width: 1216px;
   }
 }
 

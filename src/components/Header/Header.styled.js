@@ -4,18 +4,14 @@ export const StyledHeader = styled.header`
   padding-top: 20px;
   padding-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
   .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
 
-    @media screen and (min-width: 768px) {
-    }
+  .header-nav {
+    display: flex;
   }
 
   .logo {
@@ -41,5 +37,21 @@ export const StyledHeader = styled.header`
       width: 28px;
       height: 28px;
     }
+  }
+
+  .header-list {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .header-link {
+    line-height: 1.25;
+  }
+
+  .header-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 `;

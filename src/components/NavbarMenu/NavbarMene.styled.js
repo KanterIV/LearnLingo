@@ -28,6 +28,11 @@ export const StyledNavbarMenu = styled.div`
 
   .navbar-button-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10px;
+
+    @media screen and (min-width: 350px) {
+      gap: 16px;
+    }
   }
 `;
