@@ -80,6 +80,11 @@ export const StyledButton = styled.button`
     background-color: var(--accent-color);
     font-size: 16px;
     line-height: 1.56;
+
+    @media screen and (min-width: 768px) {
+      width: 230px;
+      margin: 0;
+    }
   }
 
   &.form-btn {

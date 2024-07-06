@@ -6,11 +6,23 @@ export const StyledInitialPage = styled.div`
 
   .wrapper {
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-flow: row-reverse;
+      align-items: center;
+      gap: 20px;
+    }
   }
 
   .initialpage-picture {
     @media screen and (max-width: 767px) {
       margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 320px;
+      height: 320px;
     }
   }
 
@@ -18,6 +30,10 @@ export const StyledInitialPage = styled.div`
     padding: 46px 32px;
     border-radius: 30px;
     background-color: var(--secondary-white);
+
+    @media screen and (min-width: 768px) {
+      padding: 40px 32px;
+    }
   }
 
   .title {
@@ -63,6 +79,13 @@ export const StyledInitialPage = styled.div`
     gap: 12px;
 
     padding: 40px 32px;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 40px;
+      column-gap: 80px;
+    }
   }
 
   .stats-list::before {
@@ -82,6 +105,11 @@ export const StyledInitialPage = styled.div`
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media screen and (min-width: 768px) {
+      width: calc((100% - 100px) / 2);
+      justify-content: center;
+    }
   }
 
   @media screen and (max-width: 767px) {
