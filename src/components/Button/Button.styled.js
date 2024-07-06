@@ -85,6 +85,11 @@ export const StyledButton = styled.button`
       width: 230px;
       margin: 0;
     }
+
+    @media screen and (min-width: 1440px) {
+      width: 267px;
+      font-size: 18px;
+    }
   }
 
   &.form-btn {

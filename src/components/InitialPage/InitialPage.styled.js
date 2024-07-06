@@ -4,6 +4,10 @@ import StatsBorder from "../../assets/icons/border-img.svg";
 export const StyledInitialPage = styled.div`
   padding-bottom: 32px;
 
+  @media screen and (min-width: 1440px) {
+    width: 1344px;
+  }
+
   .wrapper {
     margin-bottom: 20px;
 
@@ -12,6 +16,7 @@ export const StyledInitialPage = styled.div`
       flex-flow: row-reverse;
       align-items: center;
       gap: 20px;
+      margin-bottom: 24px;
     }
   }
 
@@ -20,7 +25,7 @@ export const StyledInitialPage = styled.div`
       margin-bottom: 20px;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
       width: 320px;
       height: 320px;
     }
@@ -34,6 +39,10 @@ export const StyledInitialPage = styled.div`
     @media screen and (min-width: 768px) {
       padding: 40px 32px;
     }
+
+    @media screen and (min-width: 1440px) {
+      padding: 98px 108px 98px 64px;
+    }
   }
 
   .title {
@@ -43,6 +52,12 @@ export const StyledInitialPage = styled.div`
     letter-spacing: -0.02em;
     text-align: center;
     margin-bottom: 24px;
+
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 32px;
+      font-size: 48px;
+      text-align: start;
+    }
   }
 
   .accent-word {
@@ -70,6 +85,12 @@ export const StyledInitialPage = styled.div`
     line-height: 1.37;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
+
+    @media screen and (min-width: 1440px) {
+      font-size: 16px;
+      width: 470px;
+      margin-bottom: 64px;
+    }
   }
 
   .stats-list {
@@ -86,6 +107,11 @@ export const StyledInitialPage = styled.div`
       row-gap: 40px;
       column-gap: 80px;
     }
+
+    @media screen and (min-width: 1440px) {
+      gap: 100px;
+      justify-content: center;
+    }
   }
 
   .stats-list::before {
@@ -96,9 +122,9 @@ export const StyledInitialPage = styled.div`
     right: 0;
     bottom: 0;
     border-radius: 30px;
-    background: url("${StatsBorder}") center/cover;
+    background: url("${StatsBorder}");
     pointer-events: none;
-    z-index: 1;
+    z-index: var(--main-z-index);
   }
 
   .stats-list-item {
@@ -106,9 +132,26 @@ export const StyledInitialPage = styled.div`
     align-items: center;
     gap: 16px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
       width: calc((100% - 100px) / 2);
       justify-content: center;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .stats-list-item::nth-child(1) {
+      width: 217px;
+    }
+
+    .stats-list-item::nth-child(2) {
+      width: 232px;
+    }
+    .stats-list-item::nth-child(3) {
+      width: 159px;
+    }
+
+    .stats-list-item::nth-child(4) {
+      width: 159px;
     }
   }
 
@@ -123,6 +166,10 @@ export const StyledInitialPage = styled.div`
     line-height: 1.29;
     letter-spacing: -0.02em;
     color: var(--third-black);
+
+    @media screen and (min-width: 1440px) {
+      width: 74px;
+    }
   }
 
   .stats-item-accent {
@@ -130,5 +177,9 @@ export const StyledInitialPage = styled.div`
     font-size: 20px;
     line-height: 1.14;
     letter-spacing: -0.02em;
+
+    @media screen and (min-width: 1440px) {
+      font-size: 28px;
+    }
   }
 `;

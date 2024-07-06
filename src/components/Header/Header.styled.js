@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  padding-top: 20px;
-  padding-bottom: 20px;
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
   .header-container {
     display: flex;
@@ -47,6 +49,11 @@ export const StyledHeader = styled.header`
 
   .header-link {
     line-height: 1.25;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+      padding: 34px 0px;
+    }
   }
 
   .header-buttons-container {
