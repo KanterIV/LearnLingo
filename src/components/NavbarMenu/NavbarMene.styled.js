@@ -10,6 +10,7 @@ export const StyledNavbarMenu = styled.div`
   padding: 100px 20px 0px 20px;
   background: linear-gradient(#ffffff, #9fbaae);
   transform: translateX(-100%);
+  z-index: var(--main-z-index);
 
   .navbar-list {
     display: flex;

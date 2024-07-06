@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
+  display: block;
   text-align: center;
   font-size: 18px;
   font-weight: 700;
@@ -16,12 +17,6 @@ export const StyledButton = styled.button`
     font-size: 16px;
     color: var(--primary-white);
     background-color: var(--primary-black);
-  }
-
-  &.navbar-register-btn {
-    font-size: 18px;
-    width: 170px;
-    height: 52px;
   }
 
   &.login-logout-btn {
@@ -48,6 +43,12 @@ export const StyledButton = styled.button`
     }
   }
 
+  &.navbar-register-btn {
+    font-size: 18px;
+    width: 170px;
+    height: 52px;
+  }
+
   &.navbar-login-logout-btn {
     font-size: 20px;
     gap: 10px;
@@ -68,6 +69,17 @@ export const StyledButton = styled.button`
         fill: var(--accent-color);
       }
     }
+  }
+
+  &.get-started-btn {
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+
+    border-radius: 12px;
+    background-color: var(--accent-color);
+    font-size: 16px;
+    line-height: 1.56;
   }
 
   &.form-btn {

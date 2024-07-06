@@ -4,9 +4,16 @@
   --primary-white: #ffffff;
   --primary-black: #121417;
   --secondary-black: #121417cc;
+  --third-black: #121417b3;
   --secondary-white: #f8f8f8;
   --green-price: #38cd3e;
   --accent-color: #9fbaae;
+  --secondary-accent-color: #cbded3;
+
+  /** App Z-index **/
+
+  --main-z-index: 2;
+  --lowest-z-index: -1;
 }
 
 body {
