@@ -2,10 +2,11 @@
   /** App Colors **/
 
   --primary-white: #ffffff;
+  --secondary-white: #f8f8f8;
   --primary-black: #121417;
   --secondary-black: #121417cc;
   --third-black: #121417b3;
-  --secondary-white: #f8f8f8;
+  --primary-grey: #8a8a89;
   --green-price: #38cd3e;
   --accent-color: #9fbaae;
   --secondary-accent-color: #cbded3;

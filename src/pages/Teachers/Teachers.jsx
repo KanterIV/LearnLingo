@@ -6,6 +6,7 @@ import { selectAllteachers } from "../../redux/user/userSelectors";
 import Button from "../../components/Button/Button";
 import FilterSelect from "../../components/FilterSelect/FilterSelect";
 import { handleFilter } from "../../services/teacherFiltration";
+import { StyledTeachersPage } from "./Teachers.styled";
 
 const Teachers = () => {
   const [visibleTeachersArr, setVisibleTeachersArr] = useState(4);
@@ -35,19 +36,23 @@ const Teachers = () => {
     filtredArray.length > 0 ? filtredArray : allTeachersArr;
 
   return (
-    <>
-      <FilterSelect setTeacherFilters={setTeacherFilters} />
-      <TeachersList teachersArr={teachersToShow.slice(0, visibleTeachersArr)} />
-      {teachersToShow.length > visibleTeachersArr && (
-        <Button
-          styledClass="registerBtn"
-          buttonType="button"
-          onClickFunction={onloadMoreBtnClick}
-        >
-          Load more
-        </Button>
-      )}
-    </>
+    <StyledTeachersPage>
+      <div className="container teachers-container">
+        <FilterSelect setTeacherFilters={setTeacherFilters} />
+        <TeachersList
+          teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+        />
+        {teachersToShow.length > visibleTeachersArr && (
+          <Button
+            styledClass="registerBtn"
+            buttonType="button"
+            onClickFunction={onloadMoreBtnClick}
+          >
+            Load more
+          </Button>
+        )}
+      </div>
+    </StyledTeachersPage>
   );
 };
 

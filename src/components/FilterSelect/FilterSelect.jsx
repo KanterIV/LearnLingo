@@ -4,18 +4,15 @@ import {
   teachersLanguage,
   teachersPrice,
 } from "../../assets/data/teachersFilterVariables";
+import { StyledFilterSelectList } from "./FilterSelect.styled";
+import {
+  MobileSelectStyles,
+  TabletDesktopSelectStyles,
+} from "../../assets/data/selectStyles";
+import { useMediaQuery } from "react-responsive";
 
 const FilterSelect = ({ setTeacherFilters }) => {
-  const selectStyles = {
-    control: (styles) => ({
-      ...styles,
-      backgroundColor: "#FFFFFF",
-      borderRadius: "14px",
-      width: "400px",
-    }),
-    indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
-    menu: (styles) => ({ ...styles, width: "400px" }),
-  };
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   const handleSelectChange = (selectOption, { name }) => {
     setTeacherFilters((prevState) => ({
@@ -25,41 +22,44 @@ const FilterSelect = ({ setTeacherFilters }) => {
   };
 
   return (
-    <ul>
-      <li>
-        <p>Languages</p>
+    <StyledFilterSelectList className="filter-list">
+      <li className="filter-list-item">
+        <p className="filter-title">Languages</p>
         <Select
           name="languages"
           placeholder="Language"
+          aria-label="language filter"
           options={teachersLanguage}
           blurInputOnSelect="true"
-          styles={selectStyles}
+          styles={isMobile ? MobileSelectStyles : TabletDesktopSelectStyles}
           onChange={handleSelectChange}
         />
       </li>
-      <li>
-        <p>Level of knowledge</p>
+      <li className="filter-list-item">
+        <p className="filter-title">Level of knowledge</p>
         <Select
           name="levels"
           placeholder="Level"
+          aria-label="level filter"
           options={languageLevel}
           blurInputOnSelect="true"
-          styles={selectStyles}
+          styles={isMobile ? MobileSelectStyles : TabletDesktopSelectStyles}
           onChange={handleSelectChange}
         />
       </li>
-      <li>
-        <p>Price</p>
+      <li className="filter-list-item">
+        <p className="filter-title">Price</p>
         <Select
           name="price_per_hour"
           placeholder="$/hour"
+          aria-label="price filter"
           options={teachersPrice}
           blurInputOnSelect="true"
-          styles={selectStyles}
+          styles={isMobile ? MobileSelectStyles : TabletDesktopSelectStyles}
           onChange={handleSelectChange}
         />
       </li>
-    </ul>
+    </StyledFilterSelectList>
   );
 };
 
