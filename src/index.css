@@ -12,7 +12,7 @@
   --secondary-accent-color: #cbded3;
 
   /** App Z-index **/
-
+  --modals-z-index: 3;
   --main-z-index: 2;
   --lowest-z-index: -1;
 }

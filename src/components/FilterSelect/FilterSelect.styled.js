@@ -4,10 +4,12 @@ export const StyledFilterSelectList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 20px;
+    margin-bottom: 34px;
   }
 
   @media screen and (min-width: 768px) {

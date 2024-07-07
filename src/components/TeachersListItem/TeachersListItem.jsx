@@ -1,22 +1,23 @@
-import { StyledTeachersListItem } from "./TeachersListItem.styled";
-
-import BookIcon from "../../assets/icons/book.svg?react";
-import StartIcon from "../../assets/icons/star.svg?react";
-import HeartIcon from "../../assets/icons/heart.svg?react";
 import Button from "../Button/Button";
 import Reviews from "../Reviews/Reviews";
 import TeacherLevelsList from "../TeacherLevelsList/TeacherLevels";
+import { StyledTeachersListItem } from "./TeachersListItem.styled";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addFavoriteTeacher,
   removeFavoriteTeacher,
 } from "../../redux/user/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { setBookingModal } from "../../redux/modals/modalsSlice";
 import {
   selectFavoriteteachers,
   selectUserSingnedIn,
 } from "../../redux/user/userSelectors";
-import { setBookingModal } from "../../redux/modals/modalsSlice";
+
+import BookIcon from "../../assets/icons/book.svg?react";
+import StartIcon from "../../assets/icons/star.svg?react";
+import HeartIcon from "../../assets/icons/heart.svg?react";
+import OnlineIcon from "../../assets/icons/online.svg?react";
 
 const TeachersListItem = ({
   id,
@@ -75,23 +76,33 @@ const TeachersListItem = ({
 
   return (
     <StyledTeachersListItem>
-      <img src={avatar_url} alt="Teacher avatar" />
-      <p>Languages</p>
-      <ul>
-        <li>
+      <div className="teacher-avatar-wrapper">
+        <img
+          src={avatar_url}
+          width="96px"
+          className="teacher-avatar"
+          alt="Teacher avatar"
+        />
+        <OnlineIcon className="online-icon" />
+      </div>
+
+      <p className="teachers-category">Languages</p>
+      <ul className="stats-list">
+        <li className="stats-list-item">
           <BookIcon />
-          <p>Lessons online</p>
+          <p className="stats-text-content">Lessons online</p>
         </li>
-        <li>
-          <p>{`Lessons done: ${lessons_done}`}</p>
+        <li className="stats-list-item">
+          <p className="stats-text-content">{`Lessons done: ${lessons_done}`}</p>
         </li>
-        <li>
+        <li className="stats-list-item">
           <StartIcon />
-          <p>{`Rating: ${rating}`}</p>
+          <p className="stats-text-content">{`Rating: ${rating}`}</p>
         </li>
-        <li>
-          <p>
-            Price / 1 hour: <span>{price_per_hour}</span>
+        <li className="stats-list-item">
+          <p className="stats-text-content">
+            Price / 1 hour:
+            <span className="stats-price">{` ${price_per_hour}$`}</span>
           </p>
         </li>
       </ul>

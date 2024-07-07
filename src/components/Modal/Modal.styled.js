@@ -11,6 +11,7 @@ export const StyledModalBackdrop = styled.div`
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  z-index: var(--modals-z-index);
 
   .modal {
     position: relative;
