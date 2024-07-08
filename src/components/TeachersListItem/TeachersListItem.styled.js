@@ -47,12 +47,22 @@ export const StyledTeachersListItem = styled.li`
     border-radius: 50%;
   }
 
+  .teacher-name-wrapper {
+    margin-bottom: 16px;
+  }
   .teachers-category {
     font-weight: 500;
     line-height: 1.5;
     color: var(--primary-grey);
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+  }
+
+  .teacher-name {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
   }
 
   .stats-list {
@@ -60,7 +70,8 @@ export const StyledTeachersListItem = styled.li`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
+    margin-bottom: 32px;
   }
 
   .stats-list-item:nth-child(2n + 1) {
@@ -101,5 +112,36 @@ export const StyledTeachersListItem = styled.li`
         }
       }
     }
+  }
+
+  .teacher-info {
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .conditions {
+    margin-bottom: 16px;
+  }
+
+  .teacher-info-subtitle {
+    color: var(--primary-grey);
+  }
+
+  .teacher-speaks {
+    text-decoration: underline;
+  }
+
+  .teacher-experience {
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .reviews-list {
+    li:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    margin-bottom: 32px;
   }
 `;

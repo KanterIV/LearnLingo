@@ -12,11 +12,21 @@ const Reviews = ({ reviews }) => {
 
       return (
         <StyledReviews key={`${reviewer_name}_${index}_${reviewer_rating}`}>
-          <img src={clientAvatarLink()} alt="User avatar" />
-          <p>{reviewer_name}</p>
-          <StartIcon />
-          <p>{reviewer_rating}</p>
-          <p>{comment}</p>
+          <div className="reviewer-details">
+            <img
+              src={clientAvatarLink()}
+              className="reviewer_avatar"
+              alt="User avatar"
+            />
+            <div>
+              <p className="reviewer-name">{reviewer_name}</p>
+              <div className="reviewer-rate-wrapper">
+                <StartIcon />
+                <p className="reviewer-rate">{`${reviewer_rating}.0`}</p>
+              </div>
+            </div>
+          </div>
+          <p className="reviewer-comment">{comment}</p>
         </StyledReviews>
       );
     });

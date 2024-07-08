@@ -44,7 +44,7 @@ const Teachers = () => {
         />
         {teachersToShow.length > visibleTeachersArr && (
           <Button
-            styledClass="registerBtn"
+            styledClass="loadMoreBtn"
             buttonType="button"
             onClickFunction={onloadMoreBtnClick}
           >

@@ -92,6 +92,30 @@ export const StyledButton = styled.button`
     }
   }
 
+  &.bookBtn {
+    @media screen and (max-width: 767px) {
+      font-size: 16px;
+      width: 210px;
+      height: 54px;
+    }
+    background-color: var(--accent-color);
+    width: 232px;
+    height: 60px;
+  }
+
+  &.loadMoreBtn {
+    @media screen and (max-width: 767px) {
+      width: 160px;
+      height: 54px;
+      font-size: 16px;
+    }
+
+    width: 183px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+  }
+
   &.form-btn {
     width: 100%;
     height: 60px;

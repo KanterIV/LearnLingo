@@ -86,7 +86,11 @@ const TeachersListItem = ({
         <OnlineIcon className="online-icon" />
       </div>
 
-      <p className="teachers-category">Languages</p>
+      <div className="teacher-name-wrapper">
+        <p className="teachers-category">Languages</p>
+        <h2 className="teacher-name">{`${name} ${surname}`}</h2>
+      </div>
+
       <ul className="stats-list">
         <li className="stats-list-item">
           <BookIcon />
@@ -118,12 +122,23 @@ const TeachersListItem = ({
       >
         <HeartIcon />
       </Button>
-      <h2>{`${name} ${surname}`}</h2>
-      <p>{`Speaks: ${languages.join(", ")}`}</p>
-      <p>{`Lesson Info: ${lesson_info}`}</p>
-      <p>{`Conditions: ${conditions.join(" ")}`}</p>
-      <p>{experience}</p>
-      <Reviews reviews={reviews} />
+      <p className="teacher-info">
+        <span className="teacher-info-subtitle">Speaks: </span>
+        <span className="teacher-speaks">{`${languages.join(", ")}`}</span>
+      </p>
+      <p className="teacher-info">
+        <span className="teacher-info-subtitle">Lesson Info:</span>
+        {` ${lesson_info}`}
+      </p>
+      <p className="teacher-info conditions">
+        <span className="teacher-info-subtitle">Conditions:</span>
+        {` ${conditions.join(" ")}`}
+      </p>
+      <p className="teacher-experience">{experience}</p>
+      <ul className="reviews-list">
+        <Reviews reviews={reviews} />
+      </ul>
+
       <TeacherLevelsList levels={levels} />
       <Button
         styledClass="bookBtn"

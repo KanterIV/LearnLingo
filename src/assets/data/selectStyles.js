@@ -9,7 +9,12 @@ export const MobileSelectStyles = {
     borderColor: isFocused && "#9fbaae",
   }),
   indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
-  menu: (styles) => ({ ...styles, width: "100%", borderRadius: "14px" }),
+  menu: (styles) => ({
+    ...styles,
+    width: "100%",
+    borderRadius: "14px",
+    "z-index": 3,
+  }),
   option: (styles, { isSelected }) => ({
     ...styles,
     borderRadius: "8px",
@@ -37,7 +42,12 @@ export const TabletDesktopSelectStyles = {
     borderColor: isFocused && "#9fbaae",
   }),
   indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
-  menu: (styles) => ({ ...styles, width: "100%", borderRadius: "14px" }),
+  menu: (styles) => ({
+    ...styles,
+    width: "100%",
+    borderRadius: "14px",
+    "z-index": 3,
+  }),
   option: (styles, { isSelected }) => ({
     ...styles,
     borderRadius: "8px",
