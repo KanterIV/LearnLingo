@@ -116,6 +116,15 @@ export const StyledButton = styled.button`
     background-color: var(--accent-color);
   }
 
+  &.readMoreBtn {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: underline;
+    background-color: transparent;
+    margin-bottom: 32px;
+  }
+
   &.form-btn {
     width: 100%;
     height: 60px;

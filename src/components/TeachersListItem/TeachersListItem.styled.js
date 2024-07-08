@@ -132,6 +132,9 @@ export const StyledTeachersListItem = styled.li`
     text-decoration: underline;
   }
 
+  .rest-teacher-info {
+    margin-bottom: 32px;
+  }
   .teacher-experience {
     line-height: 1.5;
     margin-bottom: 32px;
@@ -141,7 +144,5 @@ export const StyledTeachersListItem = styled.li`
     li:not(:last-child) {
       margin-bottom: 32px;
     }
-
-    margin-bottom: 32px;
   }
 `;

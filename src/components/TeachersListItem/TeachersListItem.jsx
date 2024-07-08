@@ -36,6 +36,7 @@ const TeachersListItem = ({
 }) => {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isFullDetails, setIsFullDetails] = useState(false);
   const favoriteTeachersArr = useSelector(selectFavoriteteachers);
   const authenticated = useSelector(selectUserSingnedIn);
   const teacherData = {
@@ -74,6 +75,10 @@ const TeachersListItem = ({
     dispatch(setBookingModal({ status: true, id: id }));
   };
 
+  const onReadMoreBtnClick = () => {
+    setIsFullDetails((prevDetailsSetting) => !prevDetailsSetting);
+  };
+
   return (
     <StyledTeachersListItem>
       <div className="teacher-avatar-wrapper">
@@ -85,12 +90,10 @@ const TeachersListItem = ({
         />
         <OnlineIcon className="online-icon" />
       </div>
-
       <div className="teacher-name-wrapper">
         <p className="teachers-category">Languages</p>
         <h2 className="teacher-name">{`${name} ${surname}`}</h2>
       </div>
-
       <ul className="stats-list">
         <li className="stats-list-item">
           <BookIcon />
@@ -134,11 +137,22 @@ const TeachersListItem = ({
         <span className="teacher-info-subtitle">Conditions:</span>
         {` ${conditions.join(" ")}`}
       </p>
-      <p className="teacher-experience">{experience}</p>
-      <ul className="reviews-list">
-        <Reviews reviews={reviews} />
-      </ul>
 
+      {isFullDetails && (
+        <div className="rest-teacher-info">
+          <p className="teacher-experience">{experience}</p>
+          <ul className="reviews-list">
+            <Reviews reviews={reviews} />
+          </ul>
+        </div>
+      )}
+      <Button
+        styledClass="readMoreBtn"
+        buttonType="button"
+        onClickFunction={onReadMoreBtnClick}
+      >
+        {isFullDetails ? "Hide details" : "Read more"}
+      </Button>
       <TeacherLevelsList levels={levels} />
       <Button
         styledClass="bookBtn"
