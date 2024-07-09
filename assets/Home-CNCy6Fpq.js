@@ -1,4 +1,4 @@
-import{u as a,a as s,j as t,B as n}from"./index-BsgbOAnM.js";const r="/LearnLingo/assets/mainimage-COodeMyn.png",d="data:image/svg+xml,%3csvg%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20fill='none'%20stroke='%239fbaae'%20stroke-width='2'%20stroke-dasharray='15,%2015'%20rx='30'%20ry='30'%20/%3e%3c/svg%3e",c=a.div`
+import{u as a,a as s,j as t,B as n}from"./index-D64_p6f6.js";const r="/LearnLingo/assets/mainimage-COodeMyn.png",d="data:image/svg+xml,%3csvg%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20fill='none'%20stroke='%239fbaae'%20stroke-width='2'%20stroke-dasharray='15,%2015'%20rx='30'%20ry='30'%20/%3e%3c/svg%3e",c=a.div`
   padding-bottom: 32px;
 
   @media screen and (min-width: 1440px) {
