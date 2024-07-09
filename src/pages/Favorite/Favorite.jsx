@@ -5,6 +5,7 @@ import TeachersList from "../../components/TeachersList/TeachersList";
 import Button from "../../components/Button/Button";
 import FilterSelect from "../../components/FilterSelect/FilterSelect";
 import { handleFilter } from "../../services/teacherFiltration";
+import { StyledFavoritePage } from "./Favorite.styled";
 
 const Favorite = () => {
   const [visibleTeachersArr, setVisibleTeachersArr] = useState(4);
@@ -29,19 +30,23 @@ const Favorite = () => {
   };
 
   return (
-    <>
-      <FilterSelect setTeacherFilters={setTeacherFilters} />
-      <TeachersList teachersArr={teachersToShow.slice(0, visibleTeachersArr)} />
-      {teachersToShow.length > visibleTeachersArr && (
-        <Button
-          styledClass="load-more-btn"
-          buttonType="button"
-          onClickFunction={onloadMoreBtnClick}
-        >
-          Load more
-        </Button>
-      )}
-    </>
+    <StyledFavoritePage>
+      <div className="container favorite-container">
+        <FilterSelect setTeacherFilters={setTeacherFilters} />
+        <TeachersList
+          teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+        />
+        {teachersToShow.length > visibleTeachersArr && (
+          <Button
+            styledClass="loadMoreBtn"
+            buttonType="button"
+            onClickFunction={onloadMoreBtnClick}
+          >
+            Load more
+          </Button>
+        )}
+      </div>
+    </StyledFavoritePage>
   );
 };
 
