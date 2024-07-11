@@ -15,24 +15,38 @@ export const StyledModalBackdrop = styled.div`
 
   .modal {
     position: relative;
+    width: 90%;
     height: auto;
     max-height: 90vh;
+    padding: 32px 16px 32px 16px;
     overflow-y: auto;
-    background-color: var(--primary-white);
     border-radius: 30px;
+    background-color: var(--primary-white);
+
+    @media screen and (min-width: 768px) {
+      width: 566px;
+      height: auto;
+      padding: 64px;
+    }
   }
 
   .title {
     font-weight: 500;
-    font-size: 40px;
+    font-size: 26px;
     line-height: 1.2;
     letter-spacing: -0.02em;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 40px;
+    }
   }
 
   .modal-text {
     font-size: 16px;
-    line-height: 1, 37;
+    line-height: 1.37;
     color: var(--secondary-black);
+    margin-bottom: 40px;
   }
 
   .close-btn {
@@ -47,17 +61,23 @@ export const StyledModalBackdrop = styled.div`
   }
 
   svg {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
+
+    @media screen and (min-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+
     path {
       transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
       stroke: var(--primary-black);
     }
-  }
 
-  svg:hover {
-    path {
-      stroke: var(--accent-color);
+    &:hover {
+      path {
+        stroke: var(--accent-color);
+      }
     }
   }
 

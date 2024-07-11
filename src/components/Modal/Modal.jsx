@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { StyledModalBackdrop } from "./Modal.styled";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import Button from "../Button/Button";
 
 import IconClose from "../../assets/icons/close.svg?react";
 
@@ -41,15 +42,15 @@ const Modal = ({ children, styledClass, title, textContent }) => {
       <div className={`modal ${styledClass}`}>
         <h2 className="title">{title}</h2>
         <p className="modal-text">{textContent}</p>
-        <button
-          className="close-btn"
-          type="button"
-          onClick={() => {
+        <Button
+          styledClass="close-btn"
+          buttonType="button"
+          onClickFunction={() => {
             dispatch(closeAllModals());
           }}
         >
           <IconClose className="close-btn-svg" />
-        </button>
+        </Button>
         {children}
       </div>
     </StyledModalBackdrop>

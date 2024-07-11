@@ -128,7 +128,12 @@ export const StyledButton = styled.button`
   &.form-btn {
     width: 100%;
     height: 60px;
+    margin-top: 40px;
     line-height: 1.56;
     background-color: var(--accent-color);
+
+    @media screen and (max-width: 1439px) {
+      font-size: 16px;
+    }
   }
 `;

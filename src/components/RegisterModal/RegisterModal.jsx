@@ -53,25 +53,27 @@ const LoginModal = () => {
       textContent={registerText}
     >
       <StyledRegisterForm onSubmit={handleSubmit(handleFormSubmit)}>
-        <input
-          {...register("name")}
-          className={`input ${errors.name ? "error-input" : ""} `}
-          type="text"
-          name="name"
-          placeholder="Name"
-        />
-        {errors.name && <div className="error">{errors.name?.message}</div>}
-
-        <input
-          {...register("email")}
-          className={`input ${errors.email ? "error-input" : ""} `}
-          type="email"
-          name="email"
-          placeholder="Email"
-        />
-        {errors.email && <div className="error">{errors.email?.message}</div>}
-
-        <div className="password-input-wrapper">
+        <div className="input-wrapper">
+          <input
+            {...register("name")}
+            className={`input ${errors.name ? "error-input" : ""} `}
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
+          {errors.name && <div className="error">{errors.name?.message}</div>}
+        </div>
+        <div className="input-wrapper">
+          <input
+            {...register("email")}
+            className={`input ${errors.email ? "error-input" : ""} `}
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+          {errors.email && <div className="error">{errors.email?.message}</div>}
+        </div>
+        <div className="input-wrapper password-input-wrapper">
           <input
             {...register("password")}
             className={`input ${errors.password ? "error-input" : ""} `}

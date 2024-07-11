@@ -8,9 +8,11 @@
   --third-black: #121417b3;
   --primary-grey: #8a8a89;
   --secondary-gray: #12141733;
+  --third-grey: #1214171a;
   --green-price: #38cd3e;
   --accent-color: #9fbaae;
   --secondary-accent-color: #cbded3;
+  --error-color: #f4c550;
 
   /** App Z-index **/
   --modals-z-index: 3;
