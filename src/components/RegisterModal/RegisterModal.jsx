@@ -1,5 +1,4 @@
 import { Modal, Button } from "../../components";
-import { StyledRegisterForm } from "./RegisterModal.styled";
 import { registerSchema } from "../../services/schemas/registerSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -52,7 +51,7 @@ const LoginModal = () => {
       title="Registration"
       textContent={registerText}
     >
-      <StyledRegisterForm onSubmit={handleSubmit(handleFormSubmit)}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <div className="input-wrapper">
           <input
             {...register("name")}
@@ -100,7 +99,7 @@ const LoginModal = () => {
         <Button styledClass="form-btn" buttonType="submit">
           Sign Up
         </Button>
-      </StyledRegisterForm>
+      </form>
     </Modal>
   );
 };

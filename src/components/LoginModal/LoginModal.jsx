@@ -1,4 +1,3 @@
-import { StyledLoginFrom } from "./LoginModal.styled";
 import { Modal, Button } from "../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../services/schemas/loginSchema";
@@ -48,17 +47,19 @@ const LoginModal = () => {
 
   return (
     <Modal styledClass="login-modal" title="Log In" textContent={loginText}>
-      <StyledLoginFrom onSubmit={handleSubmit(handleFormSubmit)}>
-        <input
-          {...register("email")}
-          className={`input ${errors.email ? "error-input" : ""} `}
-          type="text"
-          name="email"
-          placeholder="Email"
-        />
-        {errors.email && <div className="error">{errors.email?.message}</div>}
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <div className="input-wrapper">
+          <input
+            {...register("email")}
+            className={`input ${errors.email ? "error-input" : ""} `}
+            type="text"
+            name="email"
+            placeholder="Email"
+          />
+          {errors.email && <div className="error">{errors.email?.message}</div>}
+        </div>
 
-        <div className="password-input-wrapper">
+        <div className="input-wrapper password-input-wrapper">
           <input
             {...register("password")}
             className={`input ${errors.password ? "error-input" : ""} `}
@@ -85,7 +86,7 @@ const LoginModal = () => {
         <Button styledClass="form-btn" buttonType="submit">
           Login
         </Button>
-      </StyledLoginFrom>
+      </form>
     </Modal>
   );
 };

@@ -8,6 +8,6 @@ export const loginSchema = yup.object().shape({
 
   password: yup
     .string()
-    .min(8, "Password too short (minimum 8 characters)")
-    .max(64, "Password too long (max. 64 characters)"),
+    .min(8, "Password is too short")
+    .max(64, "Password is too long"),
 });
