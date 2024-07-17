@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledModalBackdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@ export const StyledModalBackdrop = styled.div`
     position: relative;
     width: 90%;
     height: auto;
-    max-height: 90vh;
+    max-height: 90dvh;
     padding: 32px 32px 32px 32px;
     overflow-y: auto;
     border-radius: 30px;
