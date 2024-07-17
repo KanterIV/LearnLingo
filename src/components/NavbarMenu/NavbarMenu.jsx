@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectNavbarMenu } from "../../redux/modals/modalsSelectors";
@@ -21,6 +21,8 @@ const NavbarMenu = () => {
   const authenticated = useSelector(selectUserSingnedIn);
   const modalElement = document.getElementsByClassName("navbar");
   const dispatch = useDispatch();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const handleLinkClick = () => {
     dispatch(setNavbarMenu(false));
@@ -52,7 +54,9 @@ const NavbarMenu = () => {
   }, [modalElement, isNavbarMenuOpen]);
 
   return (
-    <StyledNavbarMenu className="navbar">
+    <StyledNavbarMenu
+      className={!isHomePage ? "navbar navbar-background" : " navbar"}
+    >
       <ul className="navbar-list">
         <NavLink className="navbar-list-item" to="/" onClick={handleLinkClick}>
           Home

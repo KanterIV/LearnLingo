@@ -12,6 +12,10 @@ export const StyledNavbarMenu = styled.div`
   transform: translateX(-100%);
   z-index: var(--main-z-index);
 
+  &.navbar-background {
+    background: linear-gradient(#f8f8f8, #9fbaae);
+  }
+
   .navbar-list {
     display: flex;
     flex-direction: column;

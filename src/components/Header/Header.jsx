@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "../../components";
 import {
   setLoginModal,
@@ -18,6 +18,8 @@ import NavbarButton from "../NavbarButton/NavbarButton";
 const Header = () => {
   const dispatch = useDispatch();
   const authenticated = useSelector(selectUserSingnedIn);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
 
@@ -34,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <StyledHeader>
+    <StyledHeader className={!isHomePage ? "header-background" : ""}>
       <div className="container header-container">
         <Link className="logo" to="/">
           <AppLogo className="logo-svg" />

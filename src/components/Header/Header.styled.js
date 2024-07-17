@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  &.header-background {
+    background-color: var(--secondary-white);
+  }
+
   @media screen and (max-width: 767px) {
     padding-top: 20px;
     padding-bottom: 20px;
