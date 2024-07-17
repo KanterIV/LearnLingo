@@ -47,6 +47,10 @@ export const StyledModalBackdrop = styled.div`
     line-height: 1.37;
     color: var(--secondary-black);
     margin-bottom: 40px;
+
+    &.booking-modal-text {
+      margin-bottom: 20px;
+    }
   }
 
   .close-btn {
@@ -81,16 +85,22 @@ export const StyledModalBackdrop = styled.div`
     }
   }
 
-  //* Custom Modals styles  *//
+  //* ============ Custom Modals styles: ===============  *//
+
+  //* 1. All modals common styles  *//
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
   }
 
   .input-wrapper {
     position: relative;
+    margin-bottom: 18px;
+
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
   }
 
   .password-input-wrapper {
@@ -153,5 +163,45 @@ export const StyledModalBackdrop = styled.div`
     padding: 0 10px 0 10px;
     color: var(--error-color);
     background-color: var(--primary-white);
+  }
+
+  //* 2. Booking modal styles  *//
+
+  .booking-teacher-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+
+  .booking-avatar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .booking-name-title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--primary-grey);
+    margin-bottom: 4px;
+  }
+
+  .booking-teacher-name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .booking-question {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.33;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 24px;
+    }
   }
 `;

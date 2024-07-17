@@ -47,7 +47,7 @@ const LoginModal = () => {
 
   return (
     <Modal
-      styledClass="login-modal"
+      styledClass="register-modal"
       title="Registration"
       textContent={registerText}
     >

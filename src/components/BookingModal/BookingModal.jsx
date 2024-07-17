@@ -41,47 +41,64 @@ const BookingModal = () => {
 
   return (
     <Modal
-      styledClass="login-modal"
+      styledClass="booking-modal"
       title="Book trial lesson"
       textContent={registerText}
     >
-      <img src={clickedTeacherCard.avatar_url} alt="Teacher avatar" />
-      <p>Your teacher</p>
-      <h3>{`${clickedTeacherCard.name} ${clickedTeacherCard.surname}`}</h3>
-      <p>What is your main reason for learning English?</p>
+      <div className="booking-avatar-wrapper">
+        <img
+          className="booking-teacher-avatar"
+          src={clickedTeacherCard.avatar_url}
+          alt="Teacher avatar"
+        />
+        <div>
+          <p className="booking-name-title">Your teacher</p>
+          <h3 className="booking-teacher-name">{`${clickedTeacherCard.name} ${clickedTeacherCard.surname}`}</h3>
+        </div>
+      </div>
+      <p className="booking-question">
+        What is your main reason for learning English?
+      </p>
       <StyledBookingForm onSubmit={handleSubmit(handleFormSubmit)}>
         <RadioBtnList
           radioBtnValue={radioValue}
           handleRadioBtnClick={handleRadioBtnClick}
         />
-        <input
-          {...register("name")}
-          className={`input ${errors.name ? "error-input" : ""} `}
-          type="text"
-          name="name"
-          placeholder="Full Name"
-        />
-        {errors.name && <div className="error">{errors.name?.message}</div>}
 
-        <input
-          {...register("email")}
-          className={`input ${errors.email ? "error-input" : ""} `}
-          type="email"
-          name="email"
-          placeholder="Email"
-        />
-        {errors.email && <div className="error">{errors.email?.message}</div>}
+        <div className="input-wrapper">
+          <input
+            {...register("name")}
+            className={`input ${errors.name ? "error-input" : ""} `}
+            type="text"
+            name="name"
+            placeholder="Full Name"
+          />
+          {errors.name && <div className="error">{errors.name?.message}</div>}
+        </div>
 
-        <input
-          {...register("phoneNumber")}
-          className={`input ${errors.phoneNumber ? "error-input" : ""} `}
-          type="tel"
-          name="phoneNumber"
-          placeholder="Phone number"
-        />
-        {errors.phoneNumber ? (
-          <div className="error">{errors.phoneNumber?.message}</div>
-        ) : null}
+        <div className="input-wrapper">
+          <input
+            {...register("email")}
+            className={`input ${errors.email ? "error-input" : ""} `}
+            type="email"
+            name="email"
+            placeholder="Email"
+          />
+          {errors.email && <div className="error">{errors.email?.message}</div>}
+        </div>
+
+        <div className="input-wrapper">
+          <input
+            {...register("phoneNumber")}
+            className={`input ${errors.phoneNumber ? "error-input" : ""} `}
+            type="tel"
+            name="phoneNumber"
+            placeholder="Phone number"
+          />
+          {errors.phoneNumber ? (
+            <div className="error">{errors.phoneNumber?.message}</div>
+          ) : null}
+        </div>
 
         <Button styledClass="form-btn" buttonType="submit">
           Book

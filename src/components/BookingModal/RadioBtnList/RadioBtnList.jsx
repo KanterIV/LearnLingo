@@ -3,9 +3,9 @@ import { radioButtonsOptions } from "../../../assets/data/radioButtonsOptions";
 const RadioBtnList = ({ radioBtnValue, handleRadioBtnClick }) => {
   const radioBtnsMarkup = radioButtonsOptions.map((option) => {
     return (
-      <div key={option.id}>
+      <label className="radio-lable" key={option.id}>
         <input
-          className={`radioBtn ${option.id}`}
+          className={`radio-button ${option.id}-button`}
           type="radio"
           id={option.id}
           name="reason"
@@ -13,11 +13,14 @@ const RadioBtnList = ({ radioBtnValue, handleRadioBtnClick }) => {
           checked={option.value === radioBtnValue}
           onChange={handleRadioBtnClick}
         />
-        <label htmlFor={option.id}>{option.value}</label>
-      </div>
+        <span className="custom-radio-button" />
+        {option.value}
+      </label>
     );
   });
-  return <div>{radioBtnsMarkup}</div>;
+  return (
+    <fieldset className="radio-buttons-fieldset">{radioBtnsMarkup}</fieldset>
+  );
 };
 
 export default RadioBtnList;

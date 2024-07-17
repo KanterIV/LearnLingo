@@ -135,7 +135,6 @@ const TeachersListItem = ({
             <HeartIcon />
           </Button>
         </div>
-        {/* {isTablet && <h2 className="teacher-name">{`${name} ${surname}`}</h2>} */}
         <p className="teacher-info">
           <span className="teacher-info-subtitle">Speaks: </span>
           <span className="teacher-speaks">{`${languages.join(", ")}`}</span>
