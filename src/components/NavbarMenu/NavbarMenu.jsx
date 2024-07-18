@@ -68,13 +68,15 @@ const NavbarMenu = () => {
         >
           Teachers
         </NavLink>
-        <NavLink
-          className="navbar-list-item"
-          to="/favorites"
-          onClick={handleLinkClick}
-        >
-          Favorite
-        </NavLink>
+        {authenticated && (
+          <NavLink
+            className="navbar-list-item"
+            to="/favorites"
+            onClick={handleLinkClick}
+          >
+            Favorite
+          </NavLink>
+        )}
       </ul>
 
       <>

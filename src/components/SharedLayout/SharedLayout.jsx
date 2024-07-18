@@ -33,9 +33,17 @@ const SharedLayout = () => {
         {isLoginModalOpen && <LoginModal />}
         {isBookingModalOpen && <BookingModal />}
         {!authenticated && (
-          <Tooltip anchorSelect=".unlogged" openOnClick="true" place="top">
-            This functionality is available only for authorized users, please
-            log in.
+          <Tooltip
+            anchorSelect=".unlogged"
+            openOnClick="true"
+            place="top-end"
+            className="favorite-tooltip"
+            classNameArrow="favorite-tooltip-arrow"
+            // variant="warning"
+            delayShow={150}
+            delayHide={150}
+          >
+            Please sign in !
           </Tooltip>
         )}
       </main>

@@ -28,6 +28,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  position: relative;
+}
+
 @font-face {
   font-family: "Roboto";
   src: local("Roboto"),
@@ -141,6 +145,19 @@ img {
   }
 }
 
-main {
-  position: relative;
+/* ==== Custom ToolTip styles: ====  */
+
+main .favorite-tooltip {
+  background-color: var(--error-color);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 12px;
+  z-index: var(--modals-z-index);
+}
+.favorite-tooltip-arrow {
+  width: 12px !important;
+  height: 12px !important;
+  transform: rotate(36deg) !important;
+  left: 107px !important;
+  bottom: -5px !important;
 }
