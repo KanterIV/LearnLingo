@@ -9,10 +9,10 @@ import {
   selectRegisterModal,
 } from "../../redux/modals/modalsSelectors";
 import { selectUserSingnedIn } from "../../redux/user/userSelectors";
-import { Tooltip } from "react-tooltip";
 import BookingModal from "../BookingModal/BookingModal";
 import NavbarMenu from "../NavbarMenu/NavbarMenu";
 import { useMenuAnimation } from "../../services/animations";
+import TooltipModal from "../Tooltip/TooltipModal";
 
 const SharedLayout = () => {
   const isNavbarMenuOpen = useSelector(selectNavbarMenu);
@@ -32,20 +32,7 @@ const SharedLayout = () => {
         {isRegisterModalOpen && <RegisterModal />}
         {isLoginModalOpen && <LoginModal />}
         {isBookingModalOpen && <BookingModal />}
-        {!authenticated && (
-          <Tooltip
-            anchorSelect=".unlogged"
-            openOnClick="true"
-            place="top-end"
-            className="favorite-tooltip"
-            classNameArrow="favorite-tooltip-arrow"
-            // variant="warning"
-            delayShow={150}
-            delayHide={150}
-          >
-            Please sign in !
-          </Tooltip>
-        )}
+        {!authenticated && <TooltipModal />}
       </main>
     </>
   );
