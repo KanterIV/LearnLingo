@@ -8,13 +8,7 @@ const NavbarButton = () => {
   const dispatch = useDispatch();
 
   const handleOnBtnClick = () => {
-    if (!isNavbarMenuOpen) {
-      dispatch(setNavbarMenu(true));
-      return;
-    } else {
-      dispatch(setNavbarMenu(false));
-      return;
-    }
+    dispatch(setNavbarMenu(!isNavbarMenuOpen));
   };
 
   return (

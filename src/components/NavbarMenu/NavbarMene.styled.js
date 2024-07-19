@@ -5,8 +5,8 @@ export const StyledNavbarMenu = styled.div`
   top: 0;
   left: 0;
 
-  width: 100%;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   padding: 100px 20px 0px 20px;
   background: linear-gradient(#ffffff, #9fbaae);
   transform: translateX(-100%);

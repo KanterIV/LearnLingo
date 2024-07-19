@@ -145,7 +145,7 @@ img {
   }
 }
 
-/* ==== Custom ToolTip styles: ====  */
+/** ==== Custom ToolTip styles: ==== **/
 
 main .favorite-tooltip {
   background-color: var(--error-color);
