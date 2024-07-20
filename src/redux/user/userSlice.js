@@ -143,9 +143,9 @@ const userSlice = createSlice({
           userLogout.rejected,
           getAllTeachers.rejected
         ),
-        (state) => {
+        (state, action) => {
           state.isLoading = false;
-          state.error = null;
+          state.error = action.payload;
         }
       ),
 });

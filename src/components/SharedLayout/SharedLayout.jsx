@@ -1,6 +1,6 @@
 import Header from "../Header/Header";
 import { Outlet } from "react-router-dom";
-import { LoginModal, RegisterModal } from "../../components";
+import { Loader, LoginModal, RegisterModal } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectBookingModal,
@@ -8,7 +8,10 @@ import {
   selectNavbarMenu,
   selectRegisterModal,
 } from "../../redux/modals/modalsSelectors";
-import { selectUserSingnedIn } from "../../redux/user/userSelectors";
+import {
+  selectIsLoading,
+  selectUserSingnedIn,
+} from "../../redux/user/userSelectors";
 import BookingModal from "../BookingModal/BookingModal";
 import { useMediaQuery } from "react-responsive";
 import NavbarMenu from "../NavbarMenu/NavbarMenu";
@@ -21,6 +24,7 @@ const SharedLayout = () => {
   const isNavbarMenuOpen = useSelector(selectNavbarMenu);
   const isRegisterModalOpen = useSelector(selectRegisterModal);
   const isLoginModalOpen = useSelector(selectLoginModal);
+  const isLoading = useSelector(selectIsLoading);
   const { isBookingModalOpen } = useSelector(selectBookingModal);
   const authenticated = useSelector(selectUserSingnedIn);
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
@@ -44,6 +48,7 @@ const SharedLayout = () => {
         {isBookingModalOpen && <BookingModal />}
         {!authenticated && <TooltipModal />}
       </main>
+      {isLoading && <Loader />}
     </>
   );
 };

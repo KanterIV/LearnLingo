@@ -1,5 +1,12 @@
+import { ClipLoader } from "react-spinners";
+import { StyledLoaderBackdrop } from "./Loader.styled";
+
 const Loader = () => {
-  return <div>Loading...</div>;
+  return (
+    <StyledLoaderBackdrop>
+      <ClipLoader color={`var(--accent-color)`} />
+    </StyledLoaderBackdrop>
+  );
 };
 
 export default Loader;
