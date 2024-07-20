@@ -58,24 +58,30 @@ const NavbarMenu = () => {
       className={!isHomePage ? "navbar navbar-background" : " navbar"}
     >
       <ul className="navbar-list">
-        <NavLink className="navbar-list-item" to="/" onClick={handleLinkClick}>
-          Home
-        </NavLink>
-        <NavLink
-          className="navbar-list-item"
-          to="/teachers"
-          onClick={handleLinkClick}
-        >
-          Teachers
-        </NavLink>
-        {authenticated && (
+        <li>
+          <NavLink className="navbar-link" to="/" onClick={handleLinkClick}>
+            Home
+          </NavLink>
+        </li>
+        <li>
           <NavLink
-            className="navbar-list-item"
-            to="/favorites"
+            className="navbar-link"
+            to="/teachers"
             onClick={handleLinkClick}
           >
-            Favorite
+            Teachers
           </NavLink>
+        </li>
+        {authenticated && (
+          <li>
+            <NavLink
+              className="navbar-link"
+              to="/favorites"
+              onClick={handleLinkClick}
+            >
+              Favorite
+            </NavLink>
+          </li>
         )}
       </ul>
 

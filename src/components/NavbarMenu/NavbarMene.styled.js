@@ -24,8 +24,7 @@ export const StyledNavbarMenu = styled.div`
     margin-bottom: 100px;
   }
 
-  .navbar-list-item {
-    font-size: 500;
+  .navbar-link {
     font-size: 32px;
     line-height: 1.25;
     color: #121417;
