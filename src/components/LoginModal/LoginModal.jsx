@@ -10,6 +10,7 @@ import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { selectUserSingnedIn } from "../../redux/user/userSelectors";
+import { toastPromise } from "../../services/userNotifications";
 
 const LoginModal = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,9 @@ const LoginModal = () => {
       email: values.email,
       password: values.password,
     };
-    dispatch(userLogin(formData));
+    const loginPromise = dispatch(userLogin(formData)).unwrap();
+
+    toastPromise(loginPromise);
   };
 
   return (

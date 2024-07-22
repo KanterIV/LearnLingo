@@ -6,6 +6,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import {
+  toastFulfilled,
+  toastRejected,
+} from "../../services/userNotifications";
 
 export const newUserRegister = createAsyncThunk(
   "user/register",
@@ -40,8 +44,10 @@ export const userLogout = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       await signOut(auth);
+      toastFulfilled("You have successfully logged out of your account !");
       return;
     } catch (error) {
+      toastRejected("Something went wrong. Let's try again...");
       return thunkApi.rejectWithValue(error.message);
     }
   }

@@ -19,6 +19,7 @@ import { useMenuAnimation } from "../../services/animations";
 import TooltipModal from "../Tooltip/TooltipModal";
 import { useEffect } from "react";
 import { setNavbarMenu } from "../../redux/modals/modalsSlice";
+import { Toaster } from "react-hot-toast";
 
 const SharedLayout = () => {
   const isNavbarMenuOpen = useSelector(selectNavbarMenu);
@@ -49,6 +50,7 @@ const SharedLayout = () => {
         {!authenticated && <TooltipModal />}
       </main>
       {isLoading && <Loader />}
+      <Toaster />
     </>
   );
 };

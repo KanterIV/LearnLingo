@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
+import { toastPromise } from "../../services/userNotifications";
 
 const LoginModal = () => {
   const registerText =
@@ -33,7 +34,9 @@ const LoginModal = () => {
       email: values.email,
       password: values.password,
     };
-    dispatch(newUserRegister(formData));
+    const newUserPromise = dispatch(newUserRegister(formData)).unwrap();
+
+    toastPromise(newUserPromise, "register");
   };
 
   const {
