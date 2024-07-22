@@ -1,4 +1,4 @@
-import{u as h,r as t,b as p,d as x,j as e,B as f}from"./index-CxFHZtvJ.js";import{h as v,F,T as g}from"./teacherFiltration-CObu325y.js";const m=h.section`
+import{u as h,r as t,b as p,d as x,j as e,B as f}from"./index-BUQLM_LQ.js";import{h as v,F,T as g}from"./teacherFiltration-DMGz9SdA.js";const m=h.section`
   background-color: var(--secondary-white);
 
   padding-top: 16px;
