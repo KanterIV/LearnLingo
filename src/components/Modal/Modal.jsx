@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { StyledModalBackdrop } from "./Modal.styled";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
@@ -9,7 +9,7 @@ import IconClose from "../../assets/icons/close.svg?react";
 
 const Modal = ({ children, styledClass, title, textContent }) => {
   const dispatch = useDispatch();
-  const modalElement = document.getElementsByClassName(`${styledClass}`);
+  const modalRef = useRef(null);
 
   const handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -29,13 +29,16 @@ const Modal = ({ children, styledClass, title, textContent }) => {
     };
 
     window.addEventListener("keydown", handleEscapeClick);
-    disableBodyScroll(modalElement[0], options);
+
+    if (modalRef.current) {
+      disableBodyScroll(modalRef.current, options);
+    }
 
     return () => {
       window.removeEventListener("keydown", handleEscapeClick);
       clearAllBodyScrollLocks();
     };
-  }, [dispatch, modalElement]);
+  }, [dispatch]);
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
