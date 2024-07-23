@@ -58,7 +58,7 @@ const Header = () => {
               {authenticated && (
                 <li>
                   <NavLink className="header-link" to="/favorites">
-                    Favorite
+                    Favorites
                   </NavLink>
                 </li>
               )}

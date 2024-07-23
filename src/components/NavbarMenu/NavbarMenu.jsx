@@ -79,7 +79,7 @@ const NavbarMenu = () => {
               to="/favorites"
               onClick={handleLinkClick}
             >
-              Favorite
+              Favorites
             </NavLink>
           </li>
         )}
