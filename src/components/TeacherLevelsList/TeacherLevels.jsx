@@ -1,9 +1,6 @@
 import { StyledTeacherLevels } from "./TheacherLevels.styled";
 
 const TeacherLevelsList = ({ levels, filterLevel }) => {
-  // console.log(filterLevel);
-  // console.log("levels: ", levels);
-
   const teacherLevelsItem = levels.map((level) => (
     <li
       className={
