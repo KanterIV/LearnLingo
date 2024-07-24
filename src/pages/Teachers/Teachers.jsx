@@ -41,6 +41,7 @@ const Teachers = () => {
         <FilterSelect setTeacherFilters={setTeacherFilters} />
         <TeachersList
           teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+          filterLevel={teacherfilters.levels}
         />
         {teachersToShow.length > visibleTeachersArr && (
           <Button

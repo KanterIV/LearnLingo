@@ -34,6 +34,7 @@ const TeachersListItem = ({
   lesson_info,
   conditions,
   experience,
+  filterLevel,
 }) => {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -163,7 +164,7 @@ const TeachersListItem = ({
         >
           {isFullDetails ? "Hide details" : "Read more"}
         </Button>
-        <TeacherLevelsList levels={levels} />
+        <TeacherLevelsList levels={levels} filterLevel={filterLevel} />
         <Button
           styledClass="bookBtn"
           buttonType="button"

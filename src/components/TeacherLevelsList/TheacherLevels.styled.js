@@ -15,4 +15,8 @@ export const StyledTeacherLevels = styled.ul`
     border: 1px solid var(--secondary-gray);
     border-radius: 35px;
   }
+
+  .accent-level-list-item {
+    background-color: var(--accent-color);
+  }
 `;

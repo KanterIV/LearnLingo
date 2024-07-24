@@ -1,7 +1,7 @@
 import { StyledTeachersList } from "./TeachersList.styled";
 import TeachersListItem from "../TeachersListItem/TeachersListItem";
 
-const TeachersList = ({ teachersArr }) => {
+const TeachersList = ({ teachersArr, filterLevel }) => {
   return (
     <StyledTeachersList>
       {teachersArr.length !== 0 &&
@@ -38,6 +38,7 @@ const TeachersList = ({ teachersArr }) => {
               lesson_info={lesson_info}
               conditions={conditions}
               experience={experience}
+              filterLevel={filterLevel}
             />
           );
         })}
