@@ -10,6 +10,7 @@ import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   plugins: [react(), svgr()],
+  server: { host: "0.0.0.0" },
   resolve: {
     alias: {
       src: "/src",

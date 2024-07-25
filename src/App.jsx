@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ROUTE_PATH } from "./constans/routes";
 import { Loader, SharedLayout } from "./components";
@@ -14,6 +14,7 @@ const Teachers = lazy(() => import("./pages/Teachers/Teachers"));
 const Favorite = lazy(() => import("./pages/Favorite/Favorite"));
 
 function App() {
+  const [authChecked, setAuthChecked] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,11 +24,12 @@ function App() {
       } else {
         dispatch(setIsSignedInStatus(false));
       }
+      setAuthChecked(true);
     });
     return () => {
       listen();
     };
-  }, [dispatch]);
+  }, [dispatch, setAuthChecked]);
 
   return (
     <Suspense fallback={<Loader />}>
@@ -38,7 +40,7 @@ function App() {
           <Route
             path={ROUTE_PATH.favorites}
             element={
-              <PrivateRoute>
+              <PrivateRoute authChecked={authChecked}>
                 <Favorite />
               </PrivateRoute>
             }
