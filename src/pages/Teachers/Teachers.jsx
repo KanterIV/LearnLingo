@@ -24,8 +24,10 @@ const Teachers = () => {
     setVisibleTeachersArr((prevState) => prevState + 4);
   };
   useEffect(() => {
-    dispatch(getAllTeachers());
-  }, [dispatch]);
+    if (allTeachersArr.length === 0) {
+      dispatch(getAllTeachers());
+    }
+  }, [dispatch, allTeachersArr]);
 
   useEffect(() => {
     const filtered = handleFilter(allTeachersArr, teacherfilters);
