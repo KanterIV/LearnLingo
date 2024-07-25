@@ -10,6 +10,7 @@ import { selectBookingModal } from "../../redux/modals/modalsSelectors";
 import { selectAllteachers } from "../../redux/user/userSelectors";
 import { useState } from "react";
 import RadioBtnList from "./RadioBtnList/RadioBtnList";
+import { toastBooking } from "../../services/userNotifications";
 
 const BookingModal = () => {
   const registerText =
@@ -22,9 +23,11 @@ const BookingModal = () => {
   const [radioValue, setRadioValue] = useState("Career and business");
 
   const dispatch = useDispatch();
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const handleFormSubmit = ({ name }) => {
     dispatch(closeAllModals());
+    toastBooking(
+      `${name}, thank you for your booking! We will be in touch with you soon.`
+    );
   };
   const handleRadioBtnClick = (event) => {
     setRadioValue(event.target.value);
