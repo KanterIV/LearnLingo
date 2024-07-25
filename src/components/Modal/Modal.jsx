@@ -42,7 +42,7 @@ const Modal = ({ children, styledClass, title, textContent }) => {
 
   return (
     <StyledModalBackdrop onClick={handleOverlayClick}>
-      <div className={`modal ${styledClass}`}>
+      <div ref={modalRef} className={`modal ${styledClass}`}>
         <h2 className={"title"}>{title}</h2>
         <p className={`modal-text ${styledClass}-text`}>{textContent}</p>
         <Button
