@@ -7,16 +7,16 @@ import Button from "../Button/Button";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBookingModal } from "../../redux/modals/modalsSelectors";
-import { selectAllteachers } from "../../redux/user/userSelectors";
+import { selectFavoriteteachers } from "../../redux/user/userSelectors";
 import { useState } from "react";
 import RadioBtnList from "./RadioBtnList/RadioBtnList";
 
 const BookingModal = () => {
   const registerText =
     "Our experienced tutor will assess your current language level, discuss your learning goals, and tailor the lesson to your specific needs.";
-  const allTeachersArr = useSelector(selectAllteachers);
+  const favoriteTeachersArr = useSelector(selectFavoriteteachers);
   const { clickedTeachersCardId } = useSelector(selectBookingModal);
-  const clickedTeacherCard = allTeachersArr.find((teacher) => {
+  const clickedTeacherCard = favoriteTeachersArr.find((teacher) => {
     return teacher.id === clickedTeachersCardId;
   });
   const [radioValue, setRadioValue] = useState("Career and business");
