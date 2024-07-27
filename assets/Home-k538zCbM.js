@@ -1,4 +1,4 @@
-import{u as s,a as n,j as t,B as r}from"./index-Av7LSWtO.js";const c="data:image/svg+xml,%3csvg%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20fill='none'%20stroke='%239fbaae'%20stroke-width='2'%20stroke-dasharray='15,%2015'%20rx='30'%20ry='30'%20/%3e%3c/svg%3e",p=s.div`
+import{u as s,a as n,j as t,B as r}from"./index-P0MGFsfL.js";const c="data:image/svg+xml,%3csvg%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20x='0'%20y='0'%20width='100%25'%20height='100%25'%20fill='none'%20stroke='%239fbaae'%20stroke-width='2'%20stroke-dasharray='15,%2015'%20rx='30'%20ry='30'%20/%3e%3c/svg%3e",p=s.div`
   padding-bottom: 32px;
 
   @media screen and (min-width: 1440px) {
@@ -19,6 +19,7 @@ import{u as s,a as n,j as t,B as r}from"./index-Av7LSWtO.js";const c="data:image
 
   .initialpage-picture {
     @media screen and (max-width: 767px) {
+      width: 100%;
       margin-bottom: 20px;
     }
 
@@ -29,6 +30,7 @@ import{u as s,a as n,j as t,B as r}from"./index-Av7LSWtO.js";const c="data:image
   }
 
   .info-wrapper {
+    width: 100%;
     padding: 46px 32px;
     border-radius: 30px;
     background-color: var(--secondary-white);
@@ -181,8 +183,8 @@ import{u as s,a as n,j as t,B as r}from"./index-Av7LSWtO.js";const c="data:image
       font-size: 28px;
     }
   }
-`,o="/LearnLingo/assets/mainimage@1x-DXSkoEuC.webp",d="/LearnLingo/assets/mainimage@2x-Cj-8GNgV.webp",x="/LearnLingo/assets/mainimage@3x-CX_fpmkf.webp",e="/LearnLingo/assets/mainimage@1x-Co_eLaA4.png",l="/LearnLingo/assets/mainimage@2x-CHei16Qi.png",m="/LearnLingo/assets/mainimage@3x-UqNUbkjd.png",g="/LearnLingo/assets/mainimage@1x-CeivMmgq.jpg",h="/LearnLingo/assets/mainimage@2x-mXheMj4N.jpg",w="/LearnLingo/assets/mainimage@3x-txpk9h57.jpg",u=()=>{const i=n(),a=()=>{i("/teachers")};return t.jsxs(p,{className:"container initialpage-container",children:[t.jsxs("div",{className:"wrapper",children:[t.jsxs("picture",{children:[t.jsx("source",{srcSet:`${o} 1x,
-            ${d} 2x,
+`,d="/LearnLingo/assets/mainimage@1x-DXSkoEuC.webp",o="/LearnLingo/assets/mainimage@2x-Cj-8GNgV.webp",x="/LearnLingo/assets/mainimage@3x-CX_fpmkf.webp",e="/LearnLingo/assets/mainimage@1x-Co_eLaA4.png",l="/LearnLingo/assets/mainimage@2x-CHei16Qi.png",m="/LearnLingo/assets/mainimage@3x-UqNUbkjd.png",g="/LearnLingo/assets/mainimage@1x-CeivMmgq.jpg",h="/LearnLingo/assets/mainimage@2x-mXheMj4N.jpg",w="/LearnLingo/assets/mainimage@3x-txpk9h57.jpg",u=()=>{const i=n(),a=()=>{i("/teachers")};return t.jsxs(p,{className:"container initialpage-container",children:[t.jsxs("div",{className:"wrapper",children:[t.jsxs("picture",{children:[t.jsx("source",{srcSet:`${d} 1x,
+            ${o} 2x,
             ${x} 3x
             `,type:"image/webp"}),t.jsx("source",{srcSet:`${e} 1x,
             ${l} 2x,
