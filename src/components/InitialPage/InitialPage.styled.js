@@ -22,6 +22,7 @@ export const StyledInitialPage = styled.div`
 
   .initialpage-picture {
     @media screen and (max-width: 767px) {
+      width: 100%;
       margin-bottom: 20px;
     }
 
@@ -32,6 +33,7 @@ export const StyledInitialPage = styled.div`
   }
 
   .info-wrapper {
+    width: 100%;
     padding: 46px 32px;
     border-radius: 30px;
     background-color: var(--secondary-white);
