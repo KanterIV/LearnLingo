@@ -37,10 +37,12 @@ export const StyledInitialPage = styled.div`
     background-color: var(--secondary-white);
 
     @media screen and (min-width: 768px) {
+      width: 396px;
       padding: 40px 32px;
     }
 
     @media screen and (min-width: 1440px) {
+      width: 720px;
       padding: 98px 108px 98px 64px;
     }
   }

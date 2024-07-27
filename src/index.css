@@ -52,7 +52,7 @@ main {
 
 @font-face {
   font-family: "Roboto";
-  src: local("Roboto") url(./assets/fonts/Roboto-Bold.ttf) format("truetype");
+  src: local("Roboto"), url(./assets/fonts/Roboto-Bold.ttf) format("truetype");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
