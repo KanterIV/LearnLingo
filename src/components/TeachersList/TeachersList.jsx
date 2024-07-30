@@ -1,5 +1,6 @@
 import { StyledTeachersList } from "./TeachersList.styled";
-import TeachersListItem from "../TeachersListItem/TeachersListItem";
+import MotionTeacherListItem from "../TeachersListItem/TeachersListItem";
+import { teacherListAnimation } from "../../services/animations";
 
 const TeachersList = ({ teachersArr, filterLevel }) => {
   return (
@@ -23,7 +24,11 @@ const TeachersList = ({ teachersArr, filterLevel }) => {
           } = teacher;
 
           return (
-            <TeachersListItem
+            <MotionTeacherListItem
+              initial={"hidden"}
+              whileInView={"visible"}
+              viewport={{ amount: 0.05, once: true }}
+              variants={teacherListAnimation}
               key={id}
               id={id}
               name={name}

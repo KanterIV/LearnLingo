@@ -1,6 +1,22 @@
 import { stagger, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 
+export const teacherListAnimation = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
 export const useMenuAnimation = (isOpen) => {
   const [scope, animate] = useAnimate();
 
