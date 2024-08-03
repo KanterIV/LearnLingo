@@ -11,6 +11,15 @@ export const StyledButton = styled.button`
   color: var(--primary-black);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
   &.registerBtn {
     width: 166px;
     height: 48px;
@@ -32,6 +41,15 @@ export const StyledButton = styled.button`
       }
       width: 20px;
       height: 20px;
+    }
+
+    &:hover,
+    &:focus {
+      transform: scale(1);
+    }
+
+    &:active {
+      transform: scale(1);
     }
   }
 
@@ -123,6 +141,15 @@ export const StyledButton = styled.button`
     text-decoration: underline;
     background-color: transparent;
     margin-bottom: 32px;
+
+    &:hover,
+    &:focus {
+      transform: scale(1);
+    }
+
+    &:active {
+      transform: scale(1);
+    }
   }
 
   &.form-btn {

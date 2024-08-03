@@ -183,9 +183,6 @@ export const StyledTeachersListItem = styled.li`
     background-color: transparent;
 
     & svg {
-      path {
-        transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      }
       width: 20px;
       height: 20px;
 

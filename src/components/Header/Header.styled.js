@@ -52,12 +52,27 @@ export const StyledHeader = styled.header`
   }
 
   .header-link {
+    position: relative;
     line-height: 1.25;
+    z-index: var(--main-z-index);
 
     @media screen and (min-width: 768px) {
       display: block;
       padding: 34px 0px;
     }
+  }
+
+  .header-link.active::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: var(--secondary-accent-color);
+    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 170%);
+    z-index: var(--lowest-z-index);
   }
 
   .header-buttons-container {
