@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTeachers } from "../../redux/user/userSlice";
-import TeachersList from "../../components/TeachersList/TeachersList";
 import { selectAllteachers } from "../../redux/user/userSelectors";
+import TeachersList from "../../components/TeachersList/TeachersList";
 import Button from "../../components/Button/Button";
 import FilterSelect from "../../components/FilterSelect/FilterSelect";
+import FilterSimilarityInfo from "../../components/FilterSimilarityInfo/FilterSimilarityInfo";
 import { handleFilter } from "../../services/teacherFiltration";
 import { StyledTeachersPage } from "./Teachers.styled";
 
@@ -23,6 +24,15 @@ const Teachers = () => {
   const onloadMoreBtnClick = () => {
     setVisibleTeachersArr((prevState) => prevState + 4);
   };
+
+  const handleResetFilters = () => {
+    setTeacherFilters({
+      languages: null,
+      levels: null,
+      price_per_hour: null,
+    });
+  };
+
   useEffect(() => {
     if (allTeachersArr.length === 0) {
       dispatch(getAllTeachers());
@@ -35,17 +45,24 @@ const Teachers = () => {
   }, [allTeachersArr, teacherfilters]);
 
   const teachersToShow =
-    filtredArray.length > 0 ? filtredArray : allTeachersArr;
+    filtredArray && filtredArray.length > 0 ? filtredArray : allTeachersArr;
 
   return (
     <StyledTeachersPage>
       <div className="container teachers-container">
-        <FilterSelect setTeacherFilters={setTeacherFilters} />
-        <TeachersList
-          teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
-          filterLevel={teacherfilters.levels}
+        <FilterSelect
+          teacherfilters={teacherfilters}
+          setTeacherFilters={setTeacherFilters}
         />
-        {teachersToShow.length > visibleTeachersArr && (
+        {filtredArray !== null ? (
+          <TeachersList
+            teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+            filterLevel={teacherfilters.levels}
+          />
+        ) : (
+          <FilterSimilarityInfo handleResetFilters={handleResetFilters} />
+        )}
+        {filtredArray && teachersToShow.length > visibleTeachersArr && (
           <Button
             styledClass="loadMoreBtn"
             buttonType="button"

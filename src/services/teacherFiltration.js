@@ -29,6 +29,6 @@ export const handleFilter = (teachers, filters) => {
   if (filteredTeacherArray.length > 0) {
     return filteredTeacherArray;
   } else {
-    return [];
+    return null;
   }
 };

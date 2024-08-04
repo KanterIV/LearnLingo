@@ -7,6 +7,7 @@ import FilterSelect from "../../components/FilterSelect/FilterSelect";
 import { handleFilter } from "../../services/teacherFiltration";
 import { StyledFavoritePage } from "./Favorite.styled";
 import EmptyFavoritesPage from "../../components/EmptyFavoritePage/EmptyFavoritesPage";
+import FilterSimilarityInfo from "../../components/FilterSimilarityInfo/FilterSimilarityInfo";
 
 const Favorite = () => {
   const [visibleTeachersArr, setVisibleTeachersArr] = useState(4);
@@ -24,25 +25,42 @@ const Favorite = () => {
   }, [favotireTeachersArr, teacherfilters]);
 
   const teachersToShow =
-    filtredArray.length > 0 ? filtredArray : favotireTeachersArr;
+    filtredArray && filtredArray.length > 0
+      ? filtredArray
+      : favotireTeachersArr;
 
   const onloadMoreBtnClick = () => {
     setVisibleTeachersArr((prevState) => prevState + 4);
   };
 
+  const handleResetFilters = () => {
+    setTeacherFilters({
+      languages: null,
+      levels: null,
+      price_per_hour: null,
+    });
+  };
+
   return (
     <StyledFavoritePage>
       <div className="container favorite-container">
-        <FilterSelect setTeacherFilters={setTeacherFilters} />
+        <FilterSelect
+          teacherfilters={teacherfilters}
+          setTeacherFilters={setTeacherFilters}
+        />
         {favotireTeachersArr.length > 0 ? (
-          <TeachersList
-            teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
-          />
+          filtredArray !== null ? (
+            <TeachersList
+              teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+            />
+          ) : (
+            <FilterSimilarityInfo handleResetFilters={handleResetFilters} />
+          )
         ) : (
           <EmptyFavoritesPage />
         )}
 
-        {teachersToShow.length > visibleTeachersArr && (
+        {filtredArray && teachersToShow.length > visibleTeachersArr && (
           <Button
             styledClass="loadMoreBtn"
             buttonType="button"
