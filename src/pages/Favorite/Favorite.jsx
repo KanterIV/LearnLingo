@@ -52,6 +52,7 @@ const Favorite = () => {
           filtredArray !== null ? (
             <TeachersList
               teachersArr={teachersToShow.slice(0, visibleTeachersArr)}
+              filterLevel={teacherfilters.levels}
             />
           ) : (
             <FilterSimilarityInfo handleResetFilters={handleResetFilters} />
