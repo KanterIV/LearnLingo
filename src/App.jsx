@@ -6,7 +6,6 @@ import { auth } from "./services/firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { setIsSignedInStatus } from "./redux/user/userSlice";
 import { useDispatch } from "react-redux";
-import "./App.css";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("./pages/Home/Home"));
