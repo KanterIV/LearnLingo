@@ -14,4 +14,5 @@ export default defineConfig({
     },
   },
   base: "/LearnLingo/",
+  envPrefix: "APP_",
 });
