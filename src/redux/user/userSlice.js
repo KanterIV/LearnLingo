@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { auth, database } from "../../services/firebase/firebase";
+import { auth, database } from "../../firebase/firebase";
 import { get, ref } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
@@ -9,7 +9,7 @@ import {
 import {
   toastFulfilled,
   toastRejected,
-} from "../../services/userNotifications";
+} from "../../utils/helpers/userNotifications";
 
 export const newUserRegister = createAsyncThunk(
   "user/register",

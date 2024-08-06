@@ -1,8 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ROUTE_PATH } from "./constans/routes";
+import { ROUTE_PATH } from "./utils/constants/routes";
 import { Loader, SharedLayout } from "./components";
-import { auth } from "./services/firebase/firebase";
+import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { setIsSignedInStatus } from "./redux/user/userSlice";
 import { useDispatch } from "react-redux";

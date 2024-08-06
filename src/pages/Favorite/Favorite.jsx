@@ -4,7 +4,7 @@ import { selectFavoriteteachers } from "../../redux/user/userSelectors";
 import TeachersList from "../../components/TeachersList/TeachersList";
 import Button from "../../components/Button/Button";
 import FilterSelect from "../../components/FilterSelect/FilterSelect";
-import { handleFilter } from "../../services/teacherFiltration";
+import { handleFilter } from "../../utils/helpers/teacherFiltration";
 import { StyledFavoritePage } from "./Favorite.styled";
 import EmptyFavoritesPage from "../../components/EmptyFavoritePage/EmptyFavoritesPage";
 import FilterSimilarityInfo from "../../components/FilterSimilarityInfo/FilterSimilarityInfo";

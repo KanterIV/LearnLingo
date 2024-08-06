@@ -6,7 +6,7 @@ import TeachersList from "../../components/TeachersList/TeachersList";
 import Button from "../../components/Button/Button";
 import FilterSelect from "../../components/FilterSelect/FilterSelect";
 import FilterSimilarityInfo from "../../components/FilterSimilarityInfo/FilterSimilarityInfo";
-import { handleFilter } from "../../services/teacherFiltration";
+import { handleFilter } from "../../utils/helpers/teacherFiltration";
 import { StyledTeachersPage } from "./Teachers.styled";
 
 const Teachers = () => {

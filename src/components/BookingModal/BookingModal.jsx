@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Modal from "../Modal/Modal";
 import { StyledBookingForm } from "./BookingModal.styled";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { bookingSchema } from "../../services/schemas/bookingSchema";
+import { bookingSchema } from "../../utils/helpers/schemas/bookingSchema";
 import Button from "../Button/Button";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import { selectBookingModal } from "../../redux/modals/modalsSelectors";
 import { selectAllteachers } from "../../redux/user/userSelectors";
 import { useState } from "react";
 import RadioBtnList from "./RadioBtnList/RadioBtnList";
-import { toastBooking } from "../../services/userNotifications";
+import { toastBooking } from "../../utils/helpers/userNotifications";
 
 const BookingModal = () => {
   const registerText =

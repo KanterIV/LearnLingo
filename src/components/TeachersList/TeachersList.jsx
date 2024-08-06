@@ -1,6 +1,6 @@
 import { StyledTeachersList } from "./TeachersList.styled";
 import MotionTeacherListItem from "../TeachersListItem/TeachersListItem";
-import { teacherListAnimation } from "../../services/animations";
+import { teacherListAnimation } from "../../utils/helpers/animations";
 
 const TeachersList = ({ teachersArr, filterLevel }) => {
   return (

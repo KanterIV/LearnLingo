@@ -1,4 +1,4 @@
-import { radioButtonsOptions } from "../../../assets/data/radioButtonsOptions";
+import { radioButtonsOptions } from "../../../utils/constants/radioButtonsOptions";
 
 const RadioBtnList = ({ radioBtnValue, handleRadioBtnClick }) => {
   const radioBtnsMarkup = radioButtonsOptions.map((option) => {

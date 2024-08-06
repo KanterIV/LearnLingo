@@ -1,6 +1,6 @@
 import { Modal, Button } from "../../components";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../services/schemas/loginSchema";
+import { loginSchema } from "../../utils/helpers/schemas/loginSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,7 @@ import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
 import { closeAllModals } from "../../redux/modals/modalsSlice";
 import { selectUserSingnedIn } from "../../redux/user/userSelectors";
-import { toastPromise } from "../../services/userNotifications";
+import { toastPromise } from "../../utils/helpers/userNotifications";
 
 const LoginModal = () => {
   const dispatch = useDispatch();

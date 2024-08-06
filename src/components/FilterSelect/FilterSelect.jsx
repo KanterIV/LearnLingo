@@ -3,12 +3,12 @@ import {
   languageLevel,
   teachersLanguage,
   teachersPrice,
-} from "../../assets/data/teachersFilterVariables";
+} from "../../utils/constants/teachersFilterVariables";
 import { StyledFilterSelectList } from "./FilterSelect.styled";
 import {
   MobileSelectStyles,
   TabletDesktopSelectStyles,
-} from "../../assets/data/selectStyles";
+} from "../../utils/helpers/selectStyles";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 

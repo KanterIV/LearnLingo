@@ -7,6 +7,7 @@ export const MobileSelectStyles = {
     width: "100%",
     boxShadow: isFocused && "0 0 0 1px #9fbaae",
     borderColor: isFocused && "#9fbaae",
+    cursor: "pointer",
   }),
   indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
   menu: (styles) => ({
@@ -40,6 +41,7 @@ export const TabletDesktopSelectStyles = {
     fontSize: "18px",
     boxShadow: isFocused && "0 0 0 1px #9fbaae",
     borderColor: isFocused && "#9fbaae",
+    cursor: "pointer",
   }),
   indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
   menu: (styles) => ({

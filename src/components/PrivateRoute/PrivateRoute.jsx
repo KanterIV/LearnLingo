@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { ROUTE_PATH } from "../../constans/routes";
+import { ROUTE_PATH } from "../../utils/constants/routes";
 import { selectUserSingnedIn } from "../../redux/user/userSelectors";
 import { Navigate } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import { Modal, Button } from "../../components";
-import { registerSchema } from "../../services/schemas/registerSchema";
+import { registerSchema } from "../../utils/helpers/schemas/registerSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { newUserRegister } from "../../redux/user/userSlice";
@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import IconOpenedEye from "../../assets/icons/eye-on.svg?react";
 import IconClosedEye from "../../assets/icons/eye-off.svg?react";
-import { toastPromise } from "../../services/userNotifications";
+import { toastPromise } from "../../utils/helpers/userNotifications";
 
 const LoginModal = () => {
   const registerText =

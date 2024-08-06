@@ -15,7 +15,7 @@ import {
 import BookingModal from "../BookingModal/BookingModal";
 import { useMediaQuery } from "react-responsive";
 import NavbarMenu from "../NavbarMenu/NavbarMenu";
-import { useMenuAnimation } from "../../services/animations";
+import { useMenuAnimation } from "../../utils/helpers/animations";
 import TooltipModal from "../Tooltip/TooltipModal";
 import { useEffect } from "react";
 import { setNavbarMenu } from "../../redux/modals/modalsSlice";
