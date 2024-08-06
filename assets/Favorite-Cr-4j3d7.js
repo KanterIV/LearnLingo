@@ -1,4 +1,4 @@
-import{u as p,j as e,r as i,b as g,d as u,B as y}from"./index-DOdtxXhU.js";import{S as c,h as f,F as v,T as j,a as b}from"./teacherFiltration-Cng4bdLK.js";const F=p.section`
+import{u as p,j as e,r as i,b as g,d as u,B as y}from"./index-mTh8H_n_.js";import{S as c,h as f,F as v,T as j,a as b}from"./teacherFiltration-DAn3Exj3.js";const F=p.section`
   background-color: var(--secondary-white);
   height: 100dvh;
 
