@@ -34,6 +34,12 @@ export const StyledButton = styled.button`
     gap: 8px;
     font-size: 16px;
     background-color: transparent;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+      color: var(--accent-color);
+    }
 
     & svg {
       path {
@@ -41,15 +47,6 @@ export const StyledButton = styled.button`
       }
       width: 20px;
       height: 20px;
-    }
-
-    &:hover,
-    &:focus {
-      transform: scale(1);
-    }
-
-    &:active {
-      transform: scale(1);
     }
   }
 
@@ -144,10 +141,12 @@ export const StyledButton = styled.button`
 
     &:hover,
     &:focus {
+      color: var(--accent-color);
       transform: scale(1);
     }
 
     &:active {
+      color: var(--accent-color);
       transform: scale(1);
     }
   }

@@ -34,4 +34,9 @@ export const StyledFilterSelectList = styled.ul`
 
     margin-bottom: 8px;
   }
+
+  .react-select-container .react-select__option:hover {
+    cursor: pointer;
+    background-color: var(--accent-color);
+  }
 `;

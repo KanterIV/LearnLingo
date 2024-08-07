@@ -51,6 +51,8 @@ const FilterSelect = ({ teacherfilters, setTeacherFilters }) => {
         <p className="filter-title">Languages</p>
         <Select
           name="languages"
+          className="react-select-container"
+          classNamePrefix="react-select"
           value={languages ? languages : null}
           placeholder="Language"
           aria-label="language filter"
@@ -64,6 +66,8 @@ const FilterSelect = ({ teacherfilters, setTeacherFilters }) => {
         <p className="filter-title">Level of knowledge</p>
         <Select
           name="levels"
+          className="react-select-container"
+          classNamePrefix="react-select"
           value={levels ? levels : null}
           placeholder="Level"
           aria-label="level filter"
@@ -77,6 +81,8 @@ const FilterSelect = ({ teacherfilters, setTeacherFilters }) => {
         <p className="filter-title">Price</p>
         <Select
           name="price_per_hour"
+          className="react-select-container"
+          classNamePrefix="react-select"
           value={price_per_hour ? price_per_hour : null}
           placeholder="$/hour"
           aria-label="price filter"

@@ -29,9 +29,15 @@ export const StyledHeader = styled.header`
     font-size: 24px;
     line-height: 1.2;
     letter-spacing: -0.02em;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 768px) {
       font-size: 20px;
+    }
+
+    &:hover,
+    &:focus {
+      scale: 1.05;
     }
   }
 
@@ -55,10 +61,16 @@ export const StyledHeader = styled.header`
     position: relative;
     line-height: 1.25;
     z-index: var(--main-z-index);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 768px) {
       display: block;
       padding: 34px 0px;
+
+      &:hover,
+      &:focus {
+        color: var(--accent-color);
+      }
     }
   }
 
